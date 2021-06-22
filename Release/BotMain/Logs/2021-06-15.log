@@ -1,0 +1,31 @@
+[2021-06-15 02:17:47.1240] [ERROR] Произошла ошибка при отправке запроса.
+[2021-06-15 23:03:59.5944] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 184
+[2021-06-15 23:04:01.3657] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 184
+[2021-06-15 23:04:03.7793] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 184
+[2021-06-15 23:31:40.7690] [ERROR] Пользователь:305613360 Ошибка:Bad Request: message to delete not found
+[2021-06-15 23:31:54.3421] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SendCreateFitler>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 850
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionMainFilter>d__14.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 563
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionFilter>d__13.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 471
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 237
+[2021-06-15 23:32:03.3384] [ERROR] Пользователь:305613360 Ошибка:Bad Request: message to delete not found

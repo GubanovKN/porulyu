@@ -1,0 +1,61 @@
+﻿Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется откат для сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Восстанавливается исходное состояние журнала событий для источника Porulyu(BotMain).
+Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется откат для сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Восстанавливается исходное состояние журнала событий для источника Porulyu(BotMain).
+Выполняется удаление сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Предупреждение. Источник Porulyu(BotMain) не зарегистрирован на локальном компьютере.
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется откат для сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Восстанавливается исходное состояние журнала событий для источника Porulyu(BotMain).
+Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.InstallLog

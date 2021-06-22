@@ -1,0 +1,101 @@
+[2021-06-11 08:31:42.3868] [ERROR] 408: Request timed out
+[2021-06-11 10:59:46.2738] [ERROR] Пользователь:305613360 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-11 11:00:08.9265] [ERROR] Пользователь:305613360 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-11 11:01:05.9592] [ERROR] Пользователь:305613360 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-11 11:01:43.4705] [ERROR] Пользователь:305613360 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-11 11:02:04.2485] [ERROR] Пользователь:305613360 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-11 12:28:40.3087] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:28:53.8699] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:28:54.5102] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:28:55.3867] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:28:55.8786] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:28:56.0980] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 174
+[2021-06-11 12:29:33.2565] [ERROR] Пользователь:445101545 Ошибка:Неверная запись периода выпуска автомобиля
+(Возможеный период 1900 - 2021)
+[2021-06-11 16:07:47.4482] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetSaveText(Filter filter) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 695
+   в porulyu.Bot.Services.OperationsBot.<SendCreateFitler>d__21.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 815
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 632
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 438
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 234
+[2021-06-11 16:07:54.2387] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetSaveText(Filter filter) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 695
+   в porulyu.Bot.Services.OperationsBot.<SendCreateFitler>d__21.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 815
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 628
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 438
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 234
+[2021-06-11 16:37:12.4568] [ERROR] Пользователь:305613360 Ошибка:Недопустимый URI: Невозможно выполнить разбор имени хоста.
+[2021-06-11 16:40:14.1758] [ERROR] Пользователь:305613360 Ошибка:Недопустимый URI: Невозможно выполнить разбор имени хоста.
+[2021-06-11 16:45:19.2346] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unsupported start tag "br" at byte offset 30
+[2021-06-11 16:48:30.5510] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unsupported start tag "span" at byte offset 65
+[2021-06-11 16:53:30.1939] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unexpected end tag at byte offset 67
+[2021-06-11 17:12:48.7928] [ERROR] System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   в Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__3.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 28
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__12.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 184
+[2021-06-11 17:12:49.3898] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unexpected end tag at byte offset 67
+[2021-06-11 17:18:10.7585] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unexpected end tag at byte offset 67
+[2021-06-11 17:29:03.1143] [ERROR] Пользователь:305613360 Ошибка:Последовательность не содержит элементов
+[2021-06-11 17:29:17.8753] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unexpected end tag at byte offset 67
+[2021-06-11 17:30:57.6349] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse entities: Unexpected end tag at byte offset 67
+[2021-06-11 17:32:12.2628] [ERROR] Пользователь:305613360 Ошибка:Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-11 17:32:44.4627] [ERROR] Пользователь:305613360 Ошибка:Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-11 17:33:40.2828] [ERROR] Пользователь:305613360 Ошибка:Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-11 18:27:30.9955] [ERROR] Пользователь:305613360 Ошибка:Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-11 18:43:29.3358] [ERROR] 408: Request timed out
+[2021-06-11 19:51:23.2518] [ERROR] Пользователь:305613360 Ошибка:Заданный аргумент находится вне диапазона допустимых значений.
+Имя параметра: startIndex
+[2021-06-11 19:57:01.3801] [ERROR] Пользователь:305613360 Ошибка:Заданный аргумент находится вне диапазона допустимых значений.
+Имя параметра: startIndex
+[2021-06-11 23:45:49.2013] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+[2021-06-11 23:48:26.8466] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+[2021-06-11 23:49:14.6211] [ERROR] Пользователь:305613360 Ошибка:Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard

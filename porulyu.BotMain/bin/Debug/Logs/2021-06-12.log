@@ -1,0 +1,9 @@
+[2021-06-12 11:36:06.6004] [ERROR] Пользователь:305613360 Ошибка:Неверная запись периода выпуска автомобиля
+
+[2021-06-12 13:11:41.5481] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__12.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 192
+[2021-06-12 13:12:01.1317] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__12.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 192
+[2021-06-12 13:12:20.2304] [ERROR] Пользователь:848577880 Ошибка:Пользоваться ботом можно только после принятия пользовательского соглашения!
+[2021-06-12 21:01:48.5500] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__12.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 192

@@ -1,0 +1,115 @@
+[2021-06-08 22:45:35.6528] [ERROR] System.IO.FileNotFoundException: Не удалось загрузить файл или сборку "System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" либо одну из их зависимостей. Не удается найти указанный файл.
+Имя файла: 'System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'
+   в porulyu.Infrastructure.Data.ApplicationContext.OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+   в Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   в Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   в Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   в Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   в Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   в Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.EnsureCreated()
+   в porulyu.Infrastructure.Data.ApplicationContext..ctor() в C:\Users\thedr\source\repos\porulyu\porulyu.Infrastructure\Data\ApplicationContext.cs:строка 18
+   в porulyu.Bot.Services.OperationsUser..ctor() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 15
+   в porulyu.Bot.Services.OperationsBot.<Start>d__9.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 52
+
+Предупреждение: регистрация привязки сборок выключена.
+Чтобы включить регистрацию ошибок привязки сборок, установите значение параметра реестра [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) в 1.
+Примечание. Регистрация ошибок привязки сборок может привести к некоторому снижению производительности.
+Чтобы отключить эту функцию, удалите параметр реестра [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+[2021-06-08 22:47:24.5521] [ERROR] Microsoft.Data.SqlClient.SqlException (0x80131904): Разрешение CREATE DATABASE запрещено в базе данных "master".
+   в Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlConnection.cs:строка 2117
+   в Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlInternalConnection.cs:строка 814
+   в Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\TdsParser.cs:строка 1572
+   в Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\TdsParser.cs:строка 2792
+   в Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 3752
+   в Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 1986
+   в Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery() в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 1439
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   в Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   в Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.Create()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreated()
+   в Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.EnsureCreated()
+   в porulyu.Infrastructure.Data.ApplicationContext..ctor() в C:\Users\thedr\source\repos\porulyu\porulyu.Infrastructure\Data\ApplicationContext.cs:строка 18
+   в porulyu.Bot.Services.OperationsUser..ctor() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 15
+   в porulyu.Bot.Services.OperationsBot.<Start>d__9.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 52
+ClientConnectionId:6feff907-302c-4419-9f66-30eb549b6588
+Error Number: 262, State: 1, Class: 14
+[2021-06-08 22:49:10.0679] [ERROR] System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   в Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__2.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 23
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnMessageReceived>d__10.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 78
+[2021-06-08 22:49:10.0858] [ERROR] System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   в Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__2.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 23
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnMessageReceived>d__10.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 78
+[2021-06-08 22:49:10.0868] [ERROR] System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   в Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__2.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 23
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnMessageReceived>d__10.MoveNext() в C:\Users\thedr\source\repos\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 78
+[2021-06-08 22:54:26.7332] [ERROR] Не удалось найти часть пути "C:\Windows\system32\Program\Data\RegionsAndCities.conf".
+[2021-06-08 22:58:55.7706] [ERROR] Не удалось найти часть пути "C:\Windows\system32\Program\Data\RegionsAndCities.conf".
+[2021-06-08 23:01:37.7848] [ERROR] System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   в Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__2.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 23
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnMessageReceived>d__10.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 78

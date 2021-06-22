@@ -1,0 +1,19 @@
+[2021-06-19 19:56:54.4636] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 19:57:34.3696] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 19:57:57.8210] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 19:58:18.9291] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 19:58:23.5396] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 19:59:45.6394] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 20:06:15.4335] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()
+[2021-06-19 20:09:24.4008] [ERROR] ѕользователь:445101545 ќшибка:ѕользоватьс€ ботом можно только после прин€ти€ пользовательского соглашени€!
+[2021-06-19 20:11:51.7229] [ERROR] ѕользователь:445101545 ќшибка:Ќеверна€ запись цен автомобил€
+
+[2021-06-19 20:37:36.5570] [ERROR] System.NullReferenceException: —сылка на объект не указывает на экземпл€р объекта.
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext()

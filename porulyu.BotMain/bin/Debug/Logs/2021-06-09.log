@@ -1,0 +1,500 @@
+[2021-06-09 18:16:35.7405] [ERROR] System.InvalidOperationException: Connection уже имеет связанный открытый поставщик DataReader, который сначала нужно закрыть.
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<InitializeReaderAsync>d__18.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__3.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 28
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__7.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 107
+[2021-06-09 19:39:44.3583] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetModelsButtons(User user) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 363
+   в porulyu.Bot.Services.OperationsBot.<SendModels>d__27.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 713
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 293
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:40:03.4048] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetCitiesButtons(User user) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 508
+   в porulyu.Bot.Services.OperationsBot.<SendCities>d__31.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 809
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 305
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:41:07.7812] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetCitiesButtons(User user) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 508
+   в porulyu.Bot.Services.OperationsBot.<SendCities>d__31.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 809
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 305
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:41:16.5889] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetCitiesButtons(User user) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 508
+   в porulyu.Bot.Services.OperationsBot.<SendCities>d__31.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 809
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 305
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:49:10.5790] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:49:35.8304] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:49:52.3716] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:50:08.9500] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:53:53.3632] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetParamsFilter(Filter filter) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 698
+   в porulyu.Bot.Services.OperationsBot.<SendSave>d__32.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 849
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 333
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 19:54:15.8450] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:14:54.3999] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:15:59.4337] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 707
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 410
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 339
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:21:53.7034] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 704
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 402
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 342
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:22:10.8624] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 704
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 411
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 342
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:22:27.8361] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 704
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 411
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 342
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:22:53.1882] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 704
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 411
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 342
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:23:28.4897] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SendMarks>d__26.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 704
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubActionMain>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 411
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 342
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:44:17.5227] [ERROR] System.IndexOutOfRangeException: Индекс находился вне границ массива.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetEngineCapacityButtons() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 592
+   в porulyu.Bot.Services.OperationsBot.<SendEngineCapacity>d__35.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 931
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 360
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 20:44:28.4040] [ERROR] System.IndexOutOfRangeException: Индекс находился вне границ массива.
+   в porulyu.Bot.Services.OperationsCreateMessagesBot.GetMileageButtons() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsCreateMessagesBot.cs:строка 607
+   в porulyu.Bot.Services.OperationsBot.<SendMileage>d__36.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 955
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<SelectingSubAction>d__16.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 363
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 164
+[2021-06-09 21:16:30.2608] [ERROR] Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "FirstEngineCapacity".
+Недопустимое имя столбца "FirstMileage".
+Недопустимое имя столбца "SecondEngineCapacity".
+Недопустимое имя столбца "SecondMileage".
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<InitializeReaderAsync>d__18.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__3.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 28
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 153
+ClientConnectionId:6934638a-28e4-4573-a283-0372e239dab1
+Error Number: 207, State: 1, Class: 16
+[2021-06-09 21:16:36.5750] [ERROR] Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "FirstEngineCapacity".
+Недопустимое имя столбца "FirstMileage".
+Недопустимое имя столбца "SecondEngineCapacity".
+Недопустимое имя столбца "SecondMileage".
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<InitializeReaderAsync>d__18.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.<MoveNextAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.<SingleOrDefaultAsync>d__22`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsUser.<GetUser>d__3.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsUser.cs:строка 28
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 153
+ClientConnectionId:8f7a0db1-bd55-44a5-8c7b-2b342a451221
+Error Number: 207, State: 1, Class: 16
+[2021-06-09 21:17:07.2396] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 155
+[2021-06-09 21:26:29.6643] [ERROR] Пользователь:305613360 Ошибка:Неверная запись объема двигателя автомобиля
+
+[2021-06-09 21:30:42.9635] [ERROR] System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в porulyu.Bot.Services.OperationsBot.<BotOnCallbackQueryReceived>d__11.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\Services\OperationsBot.cs:строка 160

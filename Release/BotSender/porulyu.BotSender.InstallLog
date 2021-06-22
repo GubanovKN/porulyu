@@ -1,0 +1,34 @@
+﻿Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.InstallLog
+Устанавливается служба Porulyu(BotSender)...
+Служба Porulyu(BotSender) успешно установлена.
+Создается исходный EventLog Porulyu(BotSender) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotSender).
+Выполняется удаление службы Porulyu(BotSender) из системы...
+Служба Porulyu(BotSender) успешно удалена из системы.
+Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.InstallLog
+Устанавливается служба Porulyu(BotSender)...
+Служба Porulyu(BotSender) успешно установлена.
+Создается исходный EventLog Porulyu(BotSender) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.InstallLog

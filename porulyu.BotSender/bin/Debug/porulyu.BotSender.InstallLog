@@ -1,0 +1,22 @@
+﻿Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.InstallLog
+Устанавливается служба Porulyu(BotSender)...
+Служба Porulyu(BotSender) успешно установлена.
+Создается исходный EventLog Porulyu(BotSender) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotSender).
+Выполняется удаление службы Porulyu(BotSender) из системы...
+Служба Porulyu(BotSender) успешно удалена из системы.
+Попытка останова службы Porulyu(BotSender).

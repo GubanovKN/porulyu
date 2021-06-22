@@ -1,0 +1,117 @@
+﻿Выполняется установка сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Выполняется установка сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Выполняется удаление сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Предупреждение. Источник Porulyu(BotMain) не зарегистрирован на локальном компьютере.
+Выполняется удаление службы Porulyu(BotMain) из системы...
+При выполнении программы установки System.ServiceProcess.ServiceInstaller во время установки возникло исключение.
+System.ComponentModel.Win32Exception: Указанная служба не установлена
+При удалении из системы возникло исключение. Это исключение будет проигнорировано, и удаление из системы будет продолжено. Однако после завершения удаления данное приложение может оказаться не полностью удаленным.
+Выполняется установка сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Выполняется установка сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\source\repos\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Выполняется установка сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Устанавливается служба Porulyu(BotMain)...
+Служба Porulyu(BotMain) успешно установлена.
+Создается исходный EventLog Porulyu(BotMain) в журнале Application...
+Выполняется фиксация сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление сборки 'C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.exe
+   logfile = C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\bin\Debug\porulyu.Bot.InstallLog
+Выполняется удаление источника EventLog Porulyu(BotMain).
+Выполняется удаление службы Porulyu(BotMain) из системы...
+Служба Porulyu(BotMain) успешно удалена из системы.
+Попытка останова службы Porulyu(BotMain).

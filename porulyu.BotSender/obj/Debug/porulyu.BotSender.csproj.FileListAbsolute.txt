@@ -1,0 +1,16 @@
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe.config
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.exe
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.BotSender.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.Domain.dll
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.Infrastructure.dll
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.Domain.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\bin\Debug\porulyu.Infrastructure.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\NLog.config
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotSender\porulyu.BotSender.exe.config
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\obj\Debug\porulyu.BotSender.csprojAssemblyReference.cache
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\obj\Debug\porulyu.BotSender.csproj.CoreCompileInputs.cache
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\obj\Debug\porulyu.BotSender.csproj.CopyComplete
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\obj\Debug\porulyu.BotSender.exe
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\obj\Debug\porulyu.BotSender.pdb

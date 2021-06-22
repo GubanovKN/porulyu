@@ -1,0 +1,11 @@
+[2021-06-16 00:07:19.9366] [ERROR] Пользователь:305613360 Ошибка:Bad Request: message to delete not found
+[2021-06-16 08:41:49.5121] [ERROR] Произошла ошибка при отправке запроса.
+[2021-06-16 15:05:56.6307] [ERROR] Произошла ошибка при отправке запроса.
+[2021-06-16 20:29:23.9737] [ERROR] Произошла ошибка при отправке запроса.
+[2021-06-16 20:33:39.6549] [ERROR] Telegram.Bot.Exceptions.ApiRequestException: Bad Request: message to delete not found
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<DeleteMessage>d__52.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1877

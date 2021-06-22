@@ -1,0 +1,16 @@
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.deps.json
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.dll
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.pdb
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.AssemblyInfoInputs.cache
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.AssemblyInfo.cs
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.csproj.CoreCompileInputs.cache
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.dll
+C:\Users\thedr\source\repos\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.deps.json
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.dll
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\bin\Debug\netstandard2.0\porulyu.Domain.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.AssemblyInfoInputs.cache
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.AssemblyInfo.cs
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.csproj.CoreCompileInputs.cache
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.dll
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Domain\obj\Debug\netstandard2.0\porulyu.Domain.pdb
