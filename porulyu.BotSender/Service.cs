@@ -1,5 +1,7 @@
 ﻿using NLog;
 using porulyu.BotSender.Services;
+using porulyu.BotSender.Services.Main;
+using porulyu.BotSender.Services.Settings;
 using porulyu.Domain.Models;
 using porulyu.Infrastructure.Data;
 using porulyu.Infrastructure.Services;
@@ -18,10 +20,6 @@ namespace porulyu.BotSender
     partial class Service : ServiceBase
     {
         private readonly Logger logger;
-
-        private List<Tasker> Taskers;
-
-        System.Timers.Timer TimerFilters;
 
         public Service()
         {
@@ -48,14 +46,10 @@ namespace porulyu.BotSender
                 operationsData.LoadMarks();
                 OperationsBot operationsBot = new OperationsBot();
                 operationsBot.Load();
+                OperationsTimers operationsTimers = new OperationsTimers();
 
                 await operationsBot.Start();
-
-                Taskers = new List<Tasker>();
-
-                TimerFilters = new System.Timers.Timer(5000);
-                TimerFilters.Elapsed += Timer_Elapsed;
-                TimerFilters.Start();
+                operationsTimers.Start();
             }
             catch (Exception Ex)
             {
@@ -66,88 +60,6 @@ namespace porulyu.BotSender
         protected override void OnStop()
         {
             // TODO: Добавьте код, выполняющий подготовку к остановке службы.
-        }
-
-        private async void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            try
-            {
-                TimerFilters.Stop();
-
-                List<User> users = await new OperationsUser().GetUsers();
-
-                for (int i = 0; i < users.Count; i++)
-                {
-                    if (users[i].Activate)
-                    {
-                        if (users[i].DateExpired > DateTime.Now)
-                        {
-                            foreach (var filter in users[i].Filters)
-                            {
-                                if (filter.Work)
-                                {
-                                    Tasker temp = Taskers.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp == null)
-                                    {
-                                        temp = new Tasker(filter, users[i].ChatId);
-                                        await temp.Start();
-                                        Taskers.Add(temp);
-                                    }
-                                    else if (!temp.Status)
-                                    {
-                                        await temp.Start();
-                                    }
-                                }
-                                else
-                                {
-                                    Tasker temp = Taskers.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp != null)
-                                    {
-                                        temp.Stop();
-                                        Taskers.Remove(temp);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (users[i].RateId != 1)
-                        {
-                            users[i].RateId = 1;
-
-                            if (users[i].Filters.Count > users[i].Rate.CountFilters)
-                            {
-                                for (int j = users[i].Filters.Count; j > users[i].Rate.CountFilters; j--)
-                                {
-                                    await new OperationsFilter().DeleteFilter(users[i].Filters.ToList()[j]);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                var RemoveTaskers = Taskers.FindAll(p => p.CanRemove);
-
-                foreach (var task in RemoveTaskers)
-                {
-                    if (task.Status)
-                    {
-                        task.Stop();
-                    }
-
-                    Taskers.Remove(task);
-                }
-
-                TimerFilters.Start();
-            }
-            catch (Exception Ex)
-            {
-                TimerFilters.Start();
-                logger.Error(Ex.Message);
-            }
         }
     }
 }

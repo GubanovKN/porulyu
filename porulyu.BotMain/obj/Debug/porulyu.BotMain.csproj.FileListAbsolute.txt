@@ -4,9 +4,9 @@ C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\obj\Debug\porulyu.BotM
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\obj\Debug\porulyu.BotMain.exe
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Bot\obj\Debug\porulyu.BotMain.pdb
+C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.pdb
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\NLog.config
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.exe.config
-C:\Users\thedr\Desktop\Works\StartUps\porulyu\Release\BotMain\porulyu.BotMain.pdb
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\obj\Debug\porulyu.BotMain.csprojAssemblyReference.cache
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\obj\Debug\porulyu.BotMain.csproj.CoreCompileInputs.cache
 C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\obj\Debug\porulyu.BotMain.csproj.CopyComplete

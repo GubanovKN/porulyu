@@ -14,6 +14,7 @@ namespace porulyu.Infrastructure.Data
         public DbSet<Complain> Complains { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Rate> Rates { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         public ApplicationContext()
         {
@@ -32,37 +33,61 @@ namespace porulyu.Infrastructure.Data
                 {
                     Id = 1,
                     DateCreate = DateTime.Now,
-                    Name = "Пробный",
+                    Name = "Бесплатный",
                     Price = 0,
-                    CountFilters = 1,
-                    CountDays = 2
+                    CountFilters = 0,
+                    CountReports = 0,
+                    CountDays = 365,
+                    CanBuy = false,
+                    Demo = false
                 },
                 new Rate
                 {
                     Id = 2,
                     DateCreate = DateTime.Now,
-                    Name = "Стандартный",
-                    Price = 100,
-                    CountFilters = 1,
-                    CountDays = 30
-                },                
+                    Name = "Standart",
+                    Price = 0,
+                    CountFilters = 2,
+                    CountReports = 0,
+                    CountDays = 7,
+                    CanBuy = false,
+                    Demo = true
+                },
                 new Rate
                 {
                     Id = 3,
                     DateCreate = DateTime.Now,
-                    Name = "VIP",
-                    Price = 180,
-                    CountFilters = 3,
-                    CountDays = 30
+                    Name = "Standart",
+                    Price = 100,
+                    CountFilters = 2,
+                    CountReports = 0,
+                    CountDays = 30,
+                    CanBuy = true,
+                    Demo = false
                 },
                 new Rate
                 {
                     Id = 4,
                     DateCreate = DateTime.Now,
-                    Name = "VIP+",
+                    Name = "Standart+",
+                    Price = 180,
+                    CountFilters = 3,
+                    CountReports = 1,
+                    CountDays = 30,
+                    CanBuy = true,
+                    Demo = false
+                },
+                new Rate
+                {
+                    Id = 5,
+                    DateCreate = DateTime.Now,
+                    Name = "Premium",
                     Price = 200,
                     CountFilters = 5,
-                    CountDays = 30
+                    CountReports = 1,
+                    CountDays = 30,
+                    CanBuy = true,
+                    Demo = false
                 }
             };
 

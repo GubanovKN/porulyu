@@ -27,12 +27,13 @@ namespace porulyu.Domain.Models
 
         public ICollection<Filter> Filters { get; set; }
 
+        public ICollection<Payment> Payments { get; set; }
+
         public long RateId { get; set; }
         public Rate Rate { get; set; }
 
-        public string BillId { get; set; }
-
         public DateTime DateExpired { get; set; }
+        public int CountReports { get; set; }
 
         public bool Activate { get; set; }
 

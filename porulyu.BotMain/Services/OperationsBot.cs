@@ -1,4 +1,5 @@
 ﻿using NLog;
+using porulyu.Bot.Services;
 using porulyu.BotMain.Common;
 using porulyu.Infrastructure.Cryptography;
 using porulyu.Infrastructure.Data;
@@ -146,8 +147,13 @@ namespace porulyu.BotMain.Services
                                     switch (PositionDialog)
                                     {
                                         case 10:
+                                            await SendLoadReport(message, user);
                                             await SendFreeReport(message, user);
                                             return;
+                                        case 11:
+                                            throw new Exception("Запаситесь терпением, отчет подготавливается");
+                                        case 22:
+                                            throw new Exception("Запаситесь терпением, отчет подготавливается");
                                     }
                                     break;
                             }
@@ -183,15 +189,24 @@ namespace porulyu.BotMain.Services
 
                 switch (user.PositionDialog / 100)
                 {
-                    case -1:
+                    case -2:
                         switch (callbackQuery.Data)
                         {
                             case "Accept":
                                 await new OperationsUser().SetUserAgreementUser(user);
-                                await SendFirstUsage(callbackQuery.Message, user);
+                                await SendGift(callbackQuery.Message, user);
                                 break;
                             case "OK":
                                 await SendUserAgreement(callbackQuery.Message, user);
+                                break;
+                        }
+                        break;
+                    case -1:
+                        switch (callbackQuery.Data)
+                        {
+                            case "Activate":
+                                await new OperationsUser().SetRateIdUser(user, (await new OperationsRate().GetAllAsync()).Find(p => p.Demo));
+                                await SendUsage(callbackQuery.Message, user);
                                 break;
                         }
                         break;
@@ -224,11 +239,28 @@ namespace porulyu.BotMain.Services
                                     await SendUsage(callbackQuery.Message, user);
                                     break;
                                 case "Create":
-                                    await new OperationsFilter().CreateFilter(user);
-                                    await SendCreateFitler(callbackQuery.Message, user);
+                                    if (user.DateExpired > DateTime.Now)
+                                    {
+                                        if (user.Rate.CountFilters > user.Filters.Count)
+                                        {
+                                            await new OperationsFilter().CreateFilter(user);
+                                            await SendCreateFitler(callbackQuery.Message, user);
+                                        }
+                                        else
+                                        {
+                                            await SendError(callbackQuery.Message, "Достигнуто максимальное количество фильтров", user);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        await SendError(callbackQuery.Message, "Срок действия тарифа истёк", user);
+                                    }
                                     break;
                                 case "MyFilters":
                                     await SendMyFilters(callbackQuery.Message, user);
+                                    break;
+                                case "OK":
+                                    await SendFilters(callbackQuery.Message, user);
                                     break;
                             }
                         }
@@ -246,6 +278,7 @@ namespace porulyu.BotMain.Services
                                     await SendUsage(callbackQuery.Message, user);
                                     break;
                                 case "ChangeRate":
+                                    await new OperationsUser().SetPositionViewUser(user, 0);
                                     await SendAllRates(callbackQuery.Message, user);
                                     break;
                             }
@@ -265,6 +298,20 @@ namespace porulyu.BotMain.Services
                                     break;
                                 case "CheckCar":
                                     await SendCheckCar(callbackQuery.Message, user);
+                                    break;
+                                case "MyReports":
+                                    if (user.Reports.Count() > 0)
+                                    {
+                                        await new OperationsUser().SetPositionViewUser(user, 0);
+                                        await SendMyReports(callbackQuery.Message, user);
+                                    }
+                                    else
+                                    {
+                                        await SendError(callbackQuery.Message, "Вы еще не проверяли ни одного автомобиля", user);
+                                    }
+                                    break;
+                                case "OK":
+                                    await SendCheckingCar(callbackQuery.Message, user);
                                     break;
                             }
                         }
@@ -326,30 +373,34 @@ namespace porulyu.BotMain.Services
 
             await new OperationsUser().SetLastMessageIdUser(user, Id);
 
-            await new OperationsUser().SetPositionDialogUser(user, -100);
+            await new OperationsUser().SetPositionDialogUser(user, -200);
         }
         #endregion
 
-        #region Главное меню
-        private async Task SendFirstUsage(Message message, Domain.Models.User user)
+        #region Акция
+        private async Task SendGift(Message message, Domain.Models.User user)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetUsageButtons());
+            Domain.Models.Rate rate = (await new OperationsRate().GetAllAsync()).Find(p => p.Demo);
+
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetGiftButtons(rate.Name));
 
             if (message.From.Id == Bot.BotId)
             {
                 await Bot.EditMessageTextAsync(
                     chatId: message.Chat.Id,
                     messageId: message.MessageId,
-                    text: OperationsCreateMessagesBot.GetFirstUsageText(),
-                    replyMarkup: inlineKeyboard
+                    text: OperationsCreateMessagesBot.GetGiftText(rate),
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     );
             }
             else
             {
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
-                    text: OperationsCreateMessagesBot.GetFirstUsageText(),
-                    replyMarkup: inlineKeyboard
+                    text: OperationsCreateMessagesBot.GetGiftText(rate),
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -360,8 +411,11 @@ namespace porulyu.BotMain.Services
                 await new OperationsUser().SetLastMessageIdUser(user, Id);
             }
 
-            await new OperationsUser().SetPositionDialogUser(user, 0);
+            await new OperationsUser().SetPositionDialogUser(user, -100);
         }
+        #endregion
+
+        #region Главное меню
         private async Task SendUsage(Message message, Domain.Models.User user)
         {
             var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetUsageButtons());
@@ -372,7 +426,8 @@ namespace porulyu.BotMain.Services
                     chatId: message.Chat.Id,
                     messageId: message.MessageId,
                     text: OperationsCreateMessagesBot.GetUsageText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     );
             }
             else
@@ -380,7 +435,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetUsageText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -817,7 +873,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetFiltersText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -825,7 +882,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetFiltersText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -918,7 +976,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetNameText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -926,7 +985,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetNameText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -949,7 +1009,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetMarksText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -957,7 +1018,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetMarksText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -980,7 +1042,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetModelsText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -988,7 +1051,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetModelsText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1011,7 +1075,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetYearsText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1019,7 +1084,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetYearsText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1042,7 +1108,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetPricesText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1050,7 +1117,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetPricesText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1073,7 +1141,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetRegionsText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1081,7 +1150,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetRegionsText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1104,7 +1174,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetCitiesText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1112,7 +1183,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetCitiesText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1135,7 +1207,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetCustomsСlearedText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1143,7 +1216,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetCustomsСlearedText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1166,7 +1240,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetTransmissionText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1174,7 +1249,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetTransmissionText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1197,7 +1273,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetActuatorText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1205,7 +1282,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetActuatorText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1228,7 +1306,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetEngineCapacityText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1236,7 +1315,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetEngineCapacityText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1259,7 +1339,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetMileageText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1267,7 +1348,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetMileageText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1334,7 +1416,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: "Фильтр успешно сохранен!",
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1342,7 +1425,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: "Фильтр успешно сохранен!",
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1368,7 +1452,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetMyFiltersText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1376,7 +1461,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetMyFiltersText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1440,8 +1526,20 @@ namespace porulyu.BotMain.Services
                     {
                         switch (callbackQuery.Data)
                         {
+                            case "Next":
+                                await new OperationsUser().SetPositionViewUser(user, ++user.PositionView);
+                                await SendAllRates(callbackQuery.Message, user);
+                                break;
                             case "Back":
-                                await SendRates(callbackQuery.Message, user);
+                                if (user.PositionView > 0)
+                                {
+                                    await new OperationsUser().SetPositionViewUser(user, --user.PositionView);
+                                    await SendAllRates(callbackQuery.Message, user);
+                                }
+                                else
+                                {
+                                    await SendRates(callbackQuery.Message, user);
+                                }
                                 break;
                             default:
                                 await SendRate(callbackQuery.Message, user, callbackQuery.Data);
@@ -1484,7 +1582,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetRatesText(user),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1492,7 +1591,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetRatesText(user),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1518,7 +1618,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetAllRatesText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1526,7 +1627,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetAllRatesText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1541,7 +1643,14 @@ namespace porulyu.BotMain.Services
         }
         private async Task SendRate(Message message, Domain.Models.User user, string RateId)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetRateButtons());
+            Domain.Models.Payment payment = user.Payments.Where(p => p.Action == "rate" && p.ActionId == Convert.ToInt64(RateId) && p.Status != 1).FirstOrDefault();
+
+            if (payment == null)
+            {
+                payment = await new OperationsPayment().Create(await new OperationsUnitpay().GetPayment("rate", Convert.ToInt64(RateId), user));
+            }
+
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetRateButtons(payment.PaymentURL));
 
             if (message.From.Id == Bot.BotId)
             {
@@ -1606,10 +1715,38 @@ namespace porulyu.BotMain.Services
                 case 2:
                     if (PositionDialog == 20)
                     {
-                        switch (callbackQuery.Data)
+                        switch (callbackQuery.Data.Split('_')[0])
                         {
+                            case "Pay":
+                                if (user.CountReports <= 0)
+                                {
+                                    await SendMyReportPay(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                                }
+                                else
+                                {
+                                    await SendMyReportPayInclude(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                                }
+                                break;
+                            case "Show":
+                                await SendMyReport(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                                break;
+                            case "Next":
+                                await new OperationsUser().SetPositionViewUser(user, ++user.PositionView);
+                                await SendMyReports(callbackQuery.Message, user);
+                                break;
+                            case "Main":
+                                await SendUsage(callbackQuery.Message, user);
+                                break;
                             case "Back":
-                                await SendCheckingCar(callbackQuery.Message, user);
+                                if (user.PositionView > 0)
+                                {
+                                    await new OperationsUser().SetPositionViewUser(user, --user.PositionView);
+                                    await SendMyReports(callbackQuery.Message, user);
+                                }
+                                else
+                                {
+                                    await SendCheckingCar(callbackQuery.Message, user);
+                                }
                                 break;
                         }
                     }
@@ -1629,8 +1766,37 @@ namespace porulyu.BotMain.Services
                 case 1:
                     switch (callbackQuery.Data)
                     {
+                        case "OK":
+                            await SendLoadReport(callbackQuery.Message, user);
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (callbackQuery.Data.Split('_')[0])
+                    {
                         case "Pay":
-                            await SendReportPay();
+                            if (user.CountReports <= 0)
+                            {
+                                await SendReportPay(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                            }
+                            else
+                            {
+                                await SendReportPayInclude(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                            }
+                            break;
+                        case "Back":
+                            await SendCheckCar(callbackQuery.Message, user);
+                            break;
+                        case "OK":
+                            await SendCheckCar(callbackQuery.Message, user);
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (callbackQuery.Data.Split('_')[0])
+                    {
+                        case "Get":
+                            await SendFullReport(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
                             break;
                         case "Back":
                             await SendCheckCar(callbackQuery.Message, user);
@@ -1648,7 +1814,39 @@ namespace porulyu.BotMain.Services
 
             switch (PositionDialog)
             {
-
+                case 1:
+                    switch (callbackQuery.Data)
+                    {
+                        case "Get":
+                            await SendMyReportInclude(callbackQuery.Message, user, callbackQuery.Data.Split('_')[1]);
+                            break;
+                        case "Back":
+                            await SendMyReports(callbackQuery.Message, user);
+                            break;
+                        case "OK":
+                            await SendMyReports(callbackQuery.Message, user);
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (callbackQuery.Data)
+                    {
+                        case "OK":
+                            await SendLoadReport(callbackQuery.Message, user);
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (callbackQuery.Data)
+                    {
+                        case "Back":
+                            await SendMyReports(callbackQuery.Message, user);
+                            break;
+                        case "OK":
+                            await SendMyReports(callbackQuery.Message, user);
+                            break;
+                    }
+                    break;
             }
         }
         #endregion
@@ -1664,7 +1862,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetCheckingCarText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1672,7 +1871,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetCheckingCarText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1698,7 +1898,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetCheckCarText(),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1706,7 +1907,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetCheckCarText(),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1721,19 +1923,75 @@ namespace porulyu.BotMain.Services
         }
         private async Task SendFreeReport(Message message, Domain.Models.User user)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetFreeReportButtons());
+            try
+            {
+                Domain.Models.Report temp = user.Reports.FirstOrDefault(p => p.Name == message.Text && !p.Pay);
 
-            string Link = OperationsCheckCar.GetLinkReport(message.Text);
-            string Report = OperationsCheckCar.GetFreeReport(Link);
+                if (temp == null)
+                {
+                    string Link = OperationsCheckCar.GetLinkReport(message.Text);
+                    temp = await new OperationsReport().Create(user.ChatId, message.Text, Link);
+                }
 
-            await new OperationsReport().Create(user.ChatId, message.Text, Link);
+                string Report = OperationsCheckCar.GetFreeReport(temp.Link);
+
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetFreeReportButtons(temp.Id, user));
+
+                if (message.From.Id == Bot.BotId)
+                {
+                    await Bot.EditMessageTextAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId,
+                            text: Report,
+                            replyMarkup: inlineKeyboard,
+                            parseMode: ParseMode.Html
+                        );
+                }
+                else
+                {
+                    int Id = (await Bot.SendTextMessageAsync(
+                        chatId: message.Chat.Id,
+                        text: Report,
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                        )).MessageId;
+
+                    if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                    {
+                        await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                    }
+
+                    await new OperationsUser().SetLastMessageIdUser(user, Id);
+                }
+
+                await new OperationsUser().SetPositionDialogUser(user, 312);
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+                await new OperationsUser().SetPositionDialogUser(user, 312);
+                await SendError(message, Ex.Message, user);
+            }
+        }
+        private async Task SendReportPay(Message message, Domain.Models.User user, string Data)
+        {
+            Domain.Models.Report report = await new OperationsReport().Get(Convert.ToInt64(Data));
+
+            Domain.Models.Payment payment = user.Payments.Where(p => p.Action == "report" && p.ActionId == report.Id && p.Status != 1).FirstOrDefault();
+
+            if (payment == null)
+            {
+                payment = await new OperationsPayment().Create(await new OperationsUnitpay().GetPayment("report", report.Id, user));
+            }
+
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetPayReportButtons(payment.PaymentURL));
 
             if (message.From.Id == Bot.BotId)
             {
                 await Bot.EditMessageTextAsync(
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
-                        text: Report,
+                        text: OperationsCreateMessagesBot.GetPayReportText(report),
                         replyMarkup: inlineKeyboard,
                         parseMode: ParseMode.Html
                     );
@@ -1742,7 +2000,7 @@ namespace porulyu.BotMain.Services
             {
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
-                    text: Report,
+                    text: OperationsCreateMessagesBot.GetPayReportText(report),
                     replyMarkup: inlineKeyboard,
                     parseMode: ParseMode.Html
                     )).MessageId;
@@ -1755,23 +2013,20 @@ namespace porulyu.BotMain.Services
                 await new OperationsUser().SetLastMessageIdUser(user, Id);
             }
 
-            await new OperationsUser().SetPositionDialogUser(user, 311);
+            await new OperationsUser().SetPositionDialogUser(user, 313);
         }
-        private async Task SendReportPay(Message message, Domain.Models.User user)
+        private async Task SendReportPayInclude(Message message, Domain.Models.User user, string Data)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetFreeReportButtons());
+            Domain.Models.Report report = await new OperationsReport().Get(Convert.ToInt64(Data));
 
-            string Link = OperationsCheckCar.GetLinkReport(message.Text);
-            string Report = OperationsCheckCar.GetFreeReport(Link);
-
-            await new OperationsReport().Create(user.ChatId, message.Text, Link);
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetPayIncludeReportButtons(report.Id.ToString()));
 
             if (message.From.Id == Bot.BotId)
             {
                 await Bot.EditMessageTextAsync(
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
-                        text: Report,
+                        text: OperationsCreateMessagesBot.GetPayIncludeReportText(report),
                         replyMarkup: inlineKeyboard,
                         parseMode: ParseMode.Html
                     );
@@ -1780,8 +2035,93 @@ namespace porulyu.BotMain.Services
             {
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
-                    text: Report,
+                    text: OperationsCreateMessagesBot.GetPayIncludeReportText(report),
                     replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 313);
+        }
+        private async Task SendFullReport(Message message, Domain.Models.User user, string ReportId)
+        {
+            try
+            {
+                await SendLoadReport(message, user);
+
+                Domain.Models.Report temp = user.Reports.FirstOrDefault(p => p.Id == Convert.ToInt64(ReportId));
+
+                if (!new OperationsCheckCar().PayReport(new OperationsCheckCar().Auth(temp.Link), Constants.CheckCarUserName, temp.Link))
+                {
+                    throw new Exception("Не удалось оплатить отчет!");
+                }
+
+                await new OperationsUser().SetCountReportsUser(user.CountReports - 1, user);
+                await new OperationsReport().SetReportPay(true, temp);
+
+                string Report = OperationsCheckCar.GetPayReport(temp.Link);
+
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetFullReportButtons(temp.Link));
+
+                if (message.From.Id == Bot.BotId)
+                {
+                    await Bot.EditMessageTextAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId,
+                            text: Report,
+                            replyMarkup: inlineKeyboard,
+                            parseMode: ParseMode.Html
+                        );
+                }
+                else
+                {
+                    int Id = (await Bot.SendTextMessageAsync(
+                        chatId: message.Chat.Id,
+                        text: Report,
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                        )).MessageId;
+
+                    if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                    {
+                        await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                    }
+
+                    await new OperationsUser().SetLastMessageIdUser(user, Id);
+                }
+
+                await new OperationsUser().SetPositionDialogUser(user, 313);
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+                await new OperationsUser().SetPositionDialogUser(user, 313);
+                await SendError(message, "При получении отчета произошла ошибка, баланс отчетов не уменьшен", user);
+            }
+        }
+        private async Task SendLoadReport(Message message, Domain.Models.User user)
+        {
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetLoadReportText(),
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetLoadReportText(),
                     parseMode: ParseMode.Html
                     )).MessageId;
 
@@ -1798,7 +2138,249 @@ namespace porulyu.BotMain.Services
         #endregion
 
         #region Просмотр отчетов
+        private async Task SendMyReports(Message message, Domain.Models.User user)
+        {
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetMyReportsButtons(user));
 
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetMyReportsText(user),
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetMyReportsText(user),
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 320);
+        }
+        private async Task SendMyReportPay(Message message, Domain.Models.User user, string Data)
+        {
+            Domain.Models.Report report = await new OperationsReport().Get(Convert.ToInt64(Data));
+
+            Domain.Models.Payment payment = user.Payments.Where(p => p.Action == "report" && p.ActionId == report.Id && p.Status != 1).FirstOrDefault();
+
+            if (payment == null)
+            {
+                payment = await new OperationsPayment().Create(await new OperationsUnitpay().GetPayment("report", report.Id, user));
+            }
+
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetPayReportButtons(payment.PaymentURL));
+
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetPayReportText(report),
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetPayReportText(report),
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 321);
+        }
+        private async Task SendMyReportPayInclude(Message message, Domain.Models.User user, string Data)
+        {
+            Domain.Models.Report report = await new OperationsReport().Get(Convert.ToInt64(Data));
+
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetPayIncludeReportButtons(report.Id.ToString()));
+
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetPayIncludeReportText(report),
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetPayIncludeReportText(report),
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 321);
+        }
+        private async Task SendMyReport(Message message, Domain.Models.User user, string ReportId)
+        {
+            try
+            {
+                await SendLoadMyReport(message, user);
+
+                Domain.Models.Report temp = user.Reports.FirstOrDefault(p => p.Id == Convert.ToInt64(ReportId));
+
+                string Report = OperationsCheckCar.GetPayReport(temp.Link);
+
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetMyReportButtons(temp.Link));
+
+                if (message.From.Id == Bot.BotId)
+                {
+                    await Bot.EditMessageTextAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId,
+                            text: Report,
+                            replyMarkup: inlineKeyboard,
+                            parseMode: ParseMode.Html
+                        );
+                }
+                else
+                {
+                    int Id = (await Bot.SendTextMessageAsync(
+                        chatId: message.Chat.Id,
+                        text: Report,
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                        )).MessageId;
+
+                    if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                    {
+                        await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                    }
+
+                    await new OperationsUser().SetLastMessageIdUser(user, Id);
+                }
+
+                await new OperationsUser().SetPositionDialogUser(user, 323);
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+                await new OperationsUser().SetPositionDialogUser(user, 323);
+                await SendError(message, "При получении отчета произошла ошибка", user);
+            }
+        }
+        private async Task SendMyReportInclude(Message message, Domain.Models.User user, string ReportId)
+        {
+            try
+            {
+                await SendLoadMyReport(message, user);
+
+                Domain.Models.Report temp = user.Reports.FirstOrDefault(p => p.Id == Convert.ToInt64(ReportId));
+
+                if (!new OperationsCheckCar().PayReport(new OperationsCheckCar().Auth(temp.Link), Constants.CheckCarUserName, temp.Link))
+                {
+                    throw new Exception("Не удалось оплатить отчет!");
+                }
+
+                await new OperationsUser().SetCountReportsUser(user.CountReports - 1, user);
+                await new OperationsReport().SetReportPay(true, temp);
+
+                string Report = OperationsCheckCar.GetPayReport(temp.Link);
+
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetMyReportButtons(temp.Link));
+
+                if (message.From.Id == Bot.BotId)
+                {
+                    await Bot.EditMessageTextAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId,
+                            text: Report,
+                            replyMarkup: inlineKeyboard,
+                            parseMode: ParseMode.Html
+                        );
+                }
+                else
+                {
+                    int Id = (await Bot.SendTextMessageAsync(
+                        chatId: message.Chat.Id,
+                        text: Report,
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
+                        )).MessageId;
+
+                    if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                    {
+                        await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                    }
+
+                    await new OperationsUser().SetLastMessageIdUser(user, Id);
+                }
+
+                await new OperationsUser().SetPositionDialogUser(user, 323);
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+                await new OperationsUser().SetPositionDialogUser(user, 323);
+                await SendError(message, "При получении отчета произошла ошибка, баланс отчетов не уменьшен", user);
+            }
+        }
+        private async Task SendLoadMyReport(Message message, Domain.Models.User user)
+        {
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetLoadReportText(),
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetLoadReportText(),
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 322);
+        }
         #endregion
 
         #endregion
@@ -1835,7 +2417,8 @@ namespace porulyu.BotMain.Services
                         chatId: message.Chat.Id,
                         messageId: message.MessageId,
                         text: OperationsCreateMessagesBot.GetHelpText(user),
-                        replyMarkup: inlineKeyboard
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Html
                     );
             }
             else
@@ -1843,7 +2426,8 @@ namespace porulyu.BotMain.Services
                 int Id = (await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: OperationsCreateMessagesBot.GetHelpText(user),
-                    replyMarkup: inlineKeyboard
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Html
                     )).MessageId;
 
                 if (user.LastMessageId != 0 && Id != user.LastMessageId)
@@ -1908,7 +2492,8 @@ namespace porulyu.BotMain.Services
             int Id = (await Bot.SendTextMessageAsync(
                 chatId: message.Chat.Id,
                 text: Text,
-                replyMarkup: inlineKeyboard
+                replyMarkup: inlineKeyboard,
+                parseMode: ParseMode.Html
                 )).MessageId;
 
             if (user.LastMessageId != 0 && Id != user.LastMessageId)

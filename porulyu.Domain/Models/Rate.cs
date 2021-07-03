@@ -13,9 +13,12 @@ namespace porulyu.Domain.Models
         public DateTime DateCreate { get; set; }
 
         public string Name { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int CountFilters { get; set; }
+        public int CountReports { get; set; }
         public int CountDays { get; set; }
+        public bool CanBuy { get; set; }
+        public bool Demo { get; set; }
 
         public ICollection<User> Users { get; set; }
 

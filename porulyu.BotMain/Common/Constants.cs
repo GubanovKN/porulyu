@@ -15,7 +15,9 @@ namespace porulyu.BotMain.Common
         public static string PathDataRegionsAndCities = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Data\RegionsAndCities.conf";
         public static string PathDataMarksAndModels = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Data\MarksAndModels.conf";
 
-        public static string PathCheckCarAuth = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\CheckCarAuth.conf";
+        public static string PathCheckCar = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\CheckCar.conf";
+
+        public static string PathUnitpay = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Unitpay.conf";
 
         public static List<Region> Regions = new List<Region>();
         public static List<Mark> Marks = new List<Mark>();
@@ -25,5 +27,12 @@ namespace porulyu.BotMain.Common
 
         public static string CheckCarUserName = "";
         public static string CheckCarPassword = "";
+        public static double CheckCarPrice = 0;
+
+        public static string UnitpayProjectId = "";
+        public static string UnitpaySecretKey = "";
+        public static string UnitpayCurrency = "";
+
+        public static string Currency = "";
     }
 }

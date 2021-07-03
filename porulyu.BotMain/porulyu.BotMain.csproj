@@ -213,6 +213,7 @@
     <Compile Include="Services\OperationsCheckCar.cs" />
     <Compile Include="Services\OperationsCreateMessagesBot.cs" />
     <Compile Include="Services\OperationsData.cs" />
+    <Compile Include="Services\OperationsUnitpay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

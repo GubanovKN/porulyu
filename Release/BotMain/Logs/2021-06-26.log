@@ -1,0 +1,384 @@
+[2021-06-26 03:29:17.7392] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке
+[2021-06-26 03:29:40.4841] [ERROR] 408: Request timed out
+[2021-06-26 03:29:48.8496] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке
+[2021-06-26 03:30:19.9668] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке
+[2021-06-26 03:30:51.1065] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке
+[2021-06-26 13:56:18.4178] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:56:30.1083] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:56:41.7432] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:56:53.4642] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:57:05.3069] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:57:17.1704] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:57:29.0706] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:57:40.9402] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:57:52.6343] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:58:04.4100] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:58:16.0773] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:58:27.8899] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:58:39.7491] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:58:51.4974] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:59:03.3453] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 13:59:15.3135] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 14:09:19.1253] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 14:11:43.5472] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 14:12:32.3311] [ERROR] Значение StartIndex не может быть меньше нуля.
+Имя параметра: startIndex
+[2021-06-26 15:30:52.5010] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:03.3620] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:14.2987] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:25.1911] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:36.0761] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:46.9607] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:31:57.8280] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 15:32:53.4527] [ERROR] The entity type 'bool' was not found. Ensure that the entity type has been added to the model.
+[2021-06-26 20:38:53.8441] [ERROR] System.IndexOutOfRangeException: Индекс находился вне границ массива.
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 20:40:20.8075] [ERROR] System.IndexOutOfRangeException: Индекс находился вне границ массива.
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 20:44:13.3044] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 207
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 159
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 20:48:01.3071] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, отчет подготавливается
+[2021-06-26 20:48:24.7710] [ERROR] Пользователь:305613360 Ошибка:Сервис временно не доступен
+[2021-06-26 20:48:33.8066] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, отчет подготавливается
+[2021-06-26 20:51:16.6757] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 207
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 159
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 20:56:18.7035] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 207
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 159
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:00:12.0721] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 207
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 159
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:02:34.1597] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 216
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 166
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:14:15.6606] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 216
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 166
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:17:24.5319] [ERROR] 408: Request timed out
+[2021-06-26 21:17:25.2334] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 216
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 166
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:24:26.1107] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 216
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 166
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:25:17.8684] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 216
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 166
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:30:32.4653] [ERROR] 408: Request timed out
+[2021-06-26 21:30:33.1212] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 217
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 167
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:33:47.9361] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 218
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 168
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:41:34.6610] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 218
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 168
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:42:42.6656] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 218
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 168
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:44:04.3267] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 218
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 168
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:44:43.6725] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 217
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 167
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-26 21:46:10.5267] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 217
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 167
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317

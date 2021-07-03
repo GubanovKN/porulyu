@@ -14,7 +14,7 @@ namespace porulyu.Infrastructure.Services
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                return await context.Users.Include(p => p.Filters).Include(p => p.Rate).ToListAsync();
+                return await context.Users.Include(p => p.Filters).Include(p => p.Rate).Include(p => p.Reports).Include(p => p.Payments).ToListAsync();
             }
         }
         public async Task<Domain.Models.User> GetUser(long ChatId)
@@ -23,7 +23,7 @@ namespace porulyu.Infrastructure.Services
 
             using (ApplicationContext context = new ApplicationContext())
             {
-                user = await context.Users.Include(p => p.Filters).Include(p => p.Rate).FirstOrDefaultAsync(p => p.ChatId == ChatId);
+                user = await context.Users.Include(p => p.Filters).Include(p => p.Rate).Include(p => p.Reports).Include(p => p.Payments).FirstOrDefaultAsync(p => p.ChatId == ChatId);
             }
 
             return user;
@@ -33,7 +33,7 @@ namespace porulyu.Infrastructure.Services
             using (ApplicationContext context = new ApplicationContext())
             {
                 Rate rate = await new OperationsRate().Get("1");
-                await context.Users.AddAsync(new Domain.Models.User { DateCreate = DateTime.Now, ChatId = chatId, RateId = 1, DateExpired = DateTime.Now.AddDays(rate.CountDays) });
+                await context.Users.AddAsync(new Domain.Models.User { DateCreate = DateTime.Now, ChatId = chatId, RateId = 1, DateExpired = DateTime.Now.AddDays(rate.CountDays), CountReports = rate.CountReports });
                 await context.SaveChangesAsync();
             }
         }
@@ -55,23 +55,23 @@ namespace porulyu.Infrastructure.Services
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SetBillIdUser(Domain.Models.User user, string BillId)
+        public async Task SetRateIdUser(Domain.Models.User user, Rate rate)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                user.BillId = BillId;
+                user.Rate = rate;
+                user.DateExpired = DateTime.Now.AddDays(rate.CountDays);
+                user.CountReports = rate.CountReports;
 
                 context.Update(user);
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SetRateIdUser(Domain.Models.User user, string Id)
+        public async Task SetCountReportsUser(int Count, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                Rate rate = await new OperationsRate().Get(Id);
-                user.RateId = rate.Id;
-                user.DateExpired = DateTime.Now.AddDays(rate.CountDays);
+                user.CountReports = Count;
 
                 context.Update(user);
                 await context.SaveChangesAsync();

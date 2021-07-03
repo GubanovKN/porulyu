@@ -209,13 +209,20 @@
     <Compile Include="Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\OperationsBot.cs" />
-    <Compile Include="Services\OperationsConfig.cs" />
-    <Compile Include="Services\OperationsCreateMessagesBot.cs" />
-    <Compile Include="Services\OperationsData.cs" />
-    <Compile Include="Services\OperationsKolesa.cs" />
-    <Compile Include="Services\OperationsPhoto.cs" />
-    <Compile Include="Services\Tasker.cs" />
+    <Compile Include="Services\Main\OperationsBot.cs" />
+    <Compile Include="Services\Settings\OperationsConfig.cs" />
+    <Compile Include="Services\Main\OperationsCreateMessagesBot.cs" />
+    <Compile Include="Services\Settings\OperationsData.cs" />
+    <Compile Include="Services\Sities\OperationsAster.cs" />
+    <Compile Include="Services\Sities\OperationsKolesa.cs" />
+    <Compile Include="Services\Main\OperationsPhoto.cs" />
+    <Compile Include="Services\Main\OperationsTimers.cs" />
+    <Compile Include="Services\Sities\OperationsMyCar.cs" />
+    <Compile Include="Services\Sities\OperationsOLX.cs" />
+    <Compile Include="Services\Taskers\TaskerAster.cs" />
+    <Compile Include="Services\Taskers\TaskerKolesa.cs" />
+    <Compile Include="Services\Taskers\TaskerMyCar.cs" />
+    <Compile Include="Services\Taskers\TaskerOLX.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

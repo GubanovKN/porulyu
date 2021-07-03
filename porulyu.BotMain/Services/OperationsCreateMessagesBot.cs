@@ -24,10 +24,33 @@ namespace porulyu.BotMain.Services
         }
         public string GetUserAgreementText()
         {
-            string Text = "Привет!\n\r" +
-                   "Этот бот быстрого поиска автомобилей\n\r" +
-                   "\n\r" +
-                   "Для продолжения работы необходимо принять <a href=\"https://test.com\">\"Пользовательское соглашение\"</a>.";
+            string Text = "Привет, это бот поРулю – помощник в поиске авто\n\r" +
+                          "Для продолжения работы необходимо ознакомиться и принять\n\r" +
+                          "<a href=\"https://test.com\">\"Пользовательское соглашение\"</a>.";
+
+            return Text;
+        }
+        #endregion
+
+        #region Акция
+        public InlineKeyboardButton[] GetGiftButtons(string Name)
+        {
+            InlineKeyboardButton[] inlineKeyboards = new InlineKeyboardButton[1];
+
+            inlineKeyboards = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithCallbackData($"Активировать {Name} тариф", "Activate")
+            };
+
+            return inlineKeyboards;
+        }
+        public string GetGiftText(Rate rate)
+        {
+            string Text = $"Новым пользователям мы дарим одну неделю {rate.Name} пакета бесплатно.\n\r" +
+                          $"В {rate.Name} входит:\n\r" +
+                          $"├Бесплатное создание до {rate.CountFilters} пользовательских фильтров поиска авто\n\r" +
+                          "├Возможность получения отчёта по авто\n\r" +
+                          "└Самые свежие и актуальные объявления со всех площадок по продаже авто\n\r";
 
             return Text;
         }
@@ -51,19 +74,12 @@ namespace porulyu.BotMain.Services
 
             return inlineKeyboards;
         }
-        public string GetFirstUsageText()
-        {
-            string Text = $"И так, давай начнем!\n\r" +
-                           "\n\r" +
-                           "Мы увидели, что ты у нас впервые, поэтому мы дарим бесплатный \"Premium\" доступ на 1 месяц.\n\r" +
-                           "\n\r" +
-                           "Выбери пункт меню\n\r";
-
-            return Text;
-        }
         public string GetUsageText()
         {
-            string Text = $"Выбери пункт меню";
+            string Text = $"<i>Начать получать объявления одним из первых очень просто</i>\n\r" +
+                          $"\n\r" +
+                          $"<b>Для начала создай собственный фильтр для поиска авто</b>\n\r" +
+                          $"После чего бот поРулю займётся поиском авто по вашим критериям на всех популярных площадках по продаже авто";
 
             return Text;
         }
@@ -72,14 +88,7 @@ namespace porulyu.BotMain.Services
         #region Фильтры
         public string GetFiltersText()
         {
-            string Text = $"В данном пункте ты можешь:\n\r" +
-                           "\n\r" +
-                           "-Создавать\n\r" +
-                           "-Удалять\n\r" +
-                           "\r\n" +
-                           "Свои собственные фильтры по поиску автомобилей\n\r" +
-                           "\n\r" +
-                           "Выбери пункт меню";
+            string Text = $"Здесь ты можешь <b>создавать</b> и <b>удалять</b> свои фильтры поиска";
 
             return Text;
         }
@@ -798,11 +807,11 @@ namespace porulyu.BotMain.Services
         #region Тарифы
         public string GetRatesText(User user)
         {
-            string Params = $"В данном пункте осуществляется настройка тарифа\n\r\n\r" +
-                            $"Ваш тариф: {user.Rate.Name}\n\r" +
-                            $"Количество фильтров: {user.Rate.CountFilters}\n\r"+
-                            $"Период до: {user.DateExpired}\n\r\n\r"+
-                            $"Нажми \"Изменить тариф\" для перехода на другой тариф\n\r";
+            string Params = $"Здесь ты можешь увидеть <b>текущий тариф</b>. Если тебе нужно больше функций, то тариф можно поменять, нажав на кнопку <b>\"Изменить тариф\"</b>.\n\r\n\r" +
+                            $"Ваш тариф: <b>{user.Rate.Name}</b>\n\r" +
+                            $"Количество фильтров: <b>{user.Rate.CountFilters}</b>\n\r" +
+                            $"Баланс отчетов: <b>{user.CountReports}</b>\n\r" +
+                            $"Период до: <b>{user.DateExpired}</b>\n\r";
 
             return Params;
         }
@@ -829,7 +838,7 @@ namespace porulyu.BotMain.Services
         }
         public InlineKeyboardButton[][] GetAllRatesButtons(User user, List<Rate> rates)
         {
-            rates.RemoveAll(p => p.Id == user.Rate.Id);
+            rates.RemoveAll(p => p.Id == user.Rate.Id || !p.CanBuy || p.Demo);
 
             double Pages = rates.Count / 12.0;
 
@@ -883,20 +892,21 @@ namespace porulyu.BotMain.Services
         public string GetRateText(Rate rate)
         {
             string Params = "<b>Информация о тарифе</b>\n\r\n\r" +
-                            $"Имя тарифа: {rate.Name}\n\r" +
-                            $"Цена: {rate.Price} руб\n\r" +
-                            $"Количество фильтров: {rate.CountFilters}\n\r\n\r"+
-                            "<b>После выхода из данного меню, счет будет автоматически отменен</b>";
+                            $"Имя тарифа: <b>{rate.Name}</b>\n\r" +
+                            $"Цена: <b>{rate.Price}{Constants.Currency}</b>\n\r" +
+                            $"Количество фильтров: <b>{rate.CountFilters}</b>\n\r" +
+                            $"Входящих отчетов в фильтр: <b>{rate.CountReports}</b>\n\r\n\r" +
+                            "<b>После оплаты, тариф будет присвоится автоматически в течении нескольких минут</b>";
 
             return Params;
         }
-        public InlineKeyboardButton[][] GetRateButtons()
+        public InlineKeyboardButton[][] GetRateButtons(string Link)
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
 
             inlineKeyboards[0] = new InlineKeyboardButton[]
             {
-                       InlineKeyboardButton.WithCallbackData("Оплатить", "Pay")
+                       InlineKeyboardButton.WithUrl("Оплатить", Link)
             };
             inlineKeyboards[1] = new InlineKeyboardButton[]
             {
@@ -926,10 +936,12 @@ namespace porulyu.BotMain.Services
         }
         public string GetCheckingCarText()
         {
-            string Text = $"В данном пункте осуществляется проверка автомобилей и просмотр купленных отчетов\n\r";
+            string Text = $"Здесь ты можешь <b>проверить авто</b> или просмотреть ранее полученные <b>отчёты</b>.\n\r";
 
             return Text;
         }
+
+        #region Получение отчета
         public InlineKeyboardButton[][] GetCheckCarButtons()
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[1][];
@@ -947,13 +959,59 @@ namespace porulyu.BotMain.Services
 
             return Text;
         }
-        public InlineKeyboardButton[][] GetFreeReportButtons()
+        public string GetLoadReportText()
+        {
+            string Text = $"Собираю информацию, ожидайте\n\r";
+
+            return Text;
+        }
+        public InlineKeyboardButton[][] GetFreeReportButtons(long Id, User user)
+        {
+            InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
+
+            if (user.CountReports <= 0)
+            {
+                inlineKeyboards[0] = new InlineKeyboardButton[]
+                {
+                    InlineKeyboardButton.WithCallbackData($"Купить полный отчет({Constants.CheckCarPrice}{Constants.Currency})", $"Pay_{Id}")
+                };
+            }
+            else
+            {
+                inlineKeyboards[0] = new InlineKeyboardButton[]
+                {
+                    InlineKeyboardButton.WithCallbackData($"Получить полный отчет", $"Pay_{Id}")
+                };
+            }
+            inlineKeyboards[1] = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithCallbackData("Назад", "Back")
+            };
+
+            return inlineKeyboards;
+        }
+        #endregion
+
+        #region Покупка отчета
+        public string GetPayReportText(Report report)
+        {
+            string Text = $"<b>Для оплаты нажмите кнопку \"Оплатить\"</b>\n\r" +
+                          $"\n\r" +
+                          $"Отчет № <b>{report.Id}</b>\n\r" +
+                          $"VIN или Госномер - <b>{report.Name}</b>\n\r" +
+                          $"Сумма - <b>{Constants.CheckCarPrice}{Constants.Currency}</b>\n\r" +
+                          $"\n\r" +
+                          $"<b>Платеж будет проведен в течении нескольких минут, полный отчет можно будет посмотреть в \"Мои отчеты\"</b>";
+
+            return Text;
+        }
+        public InlineKeyboardButton[][] GetPayReportButtons(string Link)
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
 
             inlineKeyboards[0] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Купить полный отчет(990 ₸)", "Buy")
+                InlineKeyboardButton.WithUrl("Оплатить", Link)
             };
             inlineKeyboards[1] = new InlineKeyboardButton[]
             {
@@ -962,28 +1020,153 @@ namespace porulyu.BotMain.Services
 
             return inlineKeyboards;
         }
-        public InlineKeyboardButton[][] GetMyReportsButtons()
+        public string GetPayIncludeReportText(Report report)
+        {
+            string Text = $"<b>Для получения нажмите кнопку \"Получить\"</b>\n\r" +
+                          $"\n\r" +
+                          $"Отчет № <b>{report.Id}</b>\n\r" +
+                          $"VIN или Госномер - <b>{report.Name}</b>\n\r" +
+                          $"Сумма - <b>{Constants.CheckCarPrice}{Constants.Currency}</b>\n\r" +
+                          $"\n\r" +
+                          $"<b>После нажатия вы будете автоматически перемещены назад, для просмотра полного отчета</b>";
+
+            return Text;
+        }
+        public InlineKeyboardButton[][] GetPayIncludeReportButtons(string Id)
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
 
             inlineKeyboards[0] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Проверить авто", "CheckCar"),
-                InlineKeyboardButton.WithCallbackData("Мои отчеты", "MyReports")
+                InlineKeyboardButton.WithCallbackData("Получить", $"Get_{Id}")
             };
             inlineKeyboards[1] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Главное меню", "Main")
+                InlineKeyboardButton.WithCallbackData("Назад", "Back")
             };
 
             return inlineKeyboards;
         }
-        public string GetMyReportsText()
+        public InlineKeyboardButton[][] GetFullReportButtons(string Link)
         {
-            string Text = $"В данном пункте осуществляется проверка автомобилей и просмотр купленных отчетов\n\r";
+            InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
+
+            inlineKeyboards[0] = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithUrl("Посмотреть подробнее", Link)
+            };
+            inlineKeyboards[1] = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithCallbackData("Назад", "Back")
+            };
+
+            return inlineKeyboards;
+        }
+        #endregion
+
+        #region Просмотр отчетов
+        public InlineKeyboardButton[][] GetMyReportsButtons(User user)
+        {
+            List<Report> reports = user.Reports.ToList();
+
+            InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
+
+            int row = 0;
+
+            if (reports[user.PositionView].Pay)
+            {
+                inlineKeyboards[row] = new InlineKeyboardButton[]
+                {
+                       InlineKeyboardButton.WithCallbackData("Показать отчет", $"Show_{reports[user.PositionView].Id}")
+                };
+            }
+            else
+            {
+                if (user.CountReports <= 0)
+                {
+                    inlineKeyboards[row] = new InlineKeyboardButton[]
+                    {
+                       InlineKeyboardButton.WithCallbackData($"Купить отчет({Constants.CheckCarPrice}{Constants.Currency})", $"Pay_{reports[user.PositionView].Id}")
+                    };
+                }
+                else
+                {
+                    inlineKeyboards[row] = new InlineKeyboardButton[]
+                    {
+                       InlineKeyboardButton.WithCallbackData($"Получить отчет", $"Pay_{reports[user.PositionView].Id}")
+                    };
+                }
+            }
+
+            row++;
+
+            if (reports.Count > user.PositionView + 1)
+            {
+                inlineKeyboards[row] = new InlineKeyboardButton[]
+                {
+                       InlineKeyboardButton.WithCallbackData("Назад", "Back"),
+                       InlineKeyboardButton.WithCallbackData("Главное меню", "Main"),
+                       InlineKeyboardButton.WithCallbackData("Вперед", "Next")
+                };
+            }
+            else
+            {
+                inlineKeyboards[row] = new InlineKeyboardButton[]
+                {
+                       InlineKeyboardButton.WithCallbackData("Назад", "Back"),
+                       InlineKeyboardButton.WithCallbackData("Главное меню", "Main")
+                };
+            }
+
+            return inlineKeyboards;
+        }
+        public string GetMyReportsText(User user)
+        {
+            Report report = user.Reports.ToList()[user.PositionView];
+
+            string Text = $"Отчет № <b>{report.Id}</b>\n\r" +
+                          $"VIN или Госномер - <b>{report.Name}</b>\n\r";
+
+            if (report.Pay)
+            {
+                Text += "Статус: <b>Оплачен</b>\n\r" +
+                        "\n\r" +
+                        "<b>Если хотите просмотреть отчет, нажмите на кнопку \"Показать отчет\"</b>";
+            }
+            else
+            {
+                if (user.CountReports <= 0)
+                {
+                    Text += "Статус: <b>Ожидается оплата</b>\n\r" +
+                            "\n\r" +
+                            "<b>Для оплаты отчета, нажмите на кнопку \"Купить отчет\"</b>\n\r";
+                }
+                else
+                {
+                    Text += "Статус: <b>Ожидается оплата</b>\n\r" +
+                            "\n\r" +
+                            "<b>Для оплаты отчета, нажмите на кнопку \"Получить отчет\"</b>\n\r";
+                }
+            }
 
             return Text;
         }
+        public InlineKeyboardButton[][] GetMyReportButtons(string Link)
+        {
+            InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
+
+            inlineKeyboards[0] = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithUrl("Посмотреть подробнее", Link)
+            };
+            inlineKeyboards[1] = new InlineKeyboardButton[]
+            {
+                InlineKeyboardButton.WithCallbackData("Назад", "Back")
+            };
+
+            return inlineKeyboards;
+        }
+        #endregion
         #endregion
 
         #region Помощь
@@ -1005,11 +1188,11 @@ namespace porulyu.BotMain.Services
         }
         public string GetHelpText(User user)
         {
-            string Text = $"В данном пункте осущетсвяется поддержка пользователей\n\r" +
+            string Text = $"Здесь ты можешь посмотреть <b>часто задаваемые вопросы</b> и ответы на них.\n\r" +
                            "\n\r" +
-                           $"Твой ID: {user.ChatId}\n\r" +
+                           "Если у тебя остались вопросы или <b>твоя проблема требует индивидуального подхода</b>, ты можешь написать в чат поддержки.\n\r" +
                            "\n\r" +
-                           "Выбери пункт меню";
+                           $"Твой ID: {user.ChatId}\n\r";
 
             return Text;
         }

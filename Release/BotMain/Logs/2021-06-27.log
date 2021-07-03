@@ -1,0 +1,23 @@
+[2021-06-27 19:25:03.7478] [ERROR] System.Exception: Ошибка получения ID пользователя и отчета
+   в porulyu.BotMain.Services.OperationsCheckCar.GetIdUserAndReport(String Link, List`1 Cookies) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 231
+   в porulyu.BotMain.Services.OperationsCheckCar.PayReport(List`1 Cookies, String UserName, String Link) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsCheckCar.cs:строка 181
+   в porulyu.BotMain.Services.OperationsBot.<SendFullReport>d__49.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 2047
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionCheckCarCheckingCar>d__42.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1796
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<SelectingSubActionChekingCar>d__41.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 1709
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\OperationsBot.cs:строка 317
+[2021-06-27 19:48:59.7695] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, отчет подготавливается
+[2021-06-27 19:49:18.0714] [ERROR] Пользователь:305613360 Ошибка:Сервис временно не доступен
+[2021-06-27 20:01:31.4885] [ERROR] Автомобиль не найден
+[2021-06-27 20:01:32.1516] [ERROR] Пользователь:305613360 Ошибка:Автомобиль не найден
