@@ -14,11 +14,11 @@ namespace porulyu.Domain.Models
 
         public string Name { get; set; }
 
-        public string RegionAlias { get; set; }
-        public string CityAlias { get; set; }
+        public long RegionId { get; set; }
+        public long CityId { get; set; }
 
-        public string MarkAlias { get; set; }
-        public string ModelAlias { get; set; }
+        public long MarkId { get; set; }
+        public long ModelId { get; set; }
 
         public int FirstYear { get; set; }
         public int SecondYear { get; set; }
@@ -33,8 +33,7 @@ namespace porulyu.Domain.Models
         public double FirstEngineCapacity { get; set; }
         public double SecondEngineCapacity { get; set; }
 
-        public int FirstMileage { get; set; }
-        public int SecondMileage { get; set; }
+        public int Mileage { get; set; }
 
         public bool Work { get; set; }
 

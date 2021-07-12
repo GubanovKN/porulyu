@@ -12,21 +12,21 @@ namespace porulyu.BotSender.Services.Main
 {
     public class OperationsPhoto
     {
-        public string Combine(List<string> FileNames, string Id, long ChatId)
+        public string Combine(List<string> FileNames, string Id, long ChatId, string Site)
         {
             switch (FileNames.Count)
             {
                 case 1:
                     return FileNames[0];
                 case 2:
-                    return CombineTwoImage(FileNames, Id, ChatId);
+                    return CombineTwoImage(FileNames, Id, ChatId, Site);
                 case 3:
-                    return CombineThreeImage(FileNames, Id, ChatId);
+                    return CombineThreeImage(FileNames, Id, ChatId, Site);
                 default:
                     return null;
             }
         }
-        private string CombineTwoImage(List<string> FileNames, string Id, long ChatId)
+        private string CombineTwoImage(List<string> FileNames, string Id, long ChatId, string Site)
         {
             Bitmap first = new Bitmap(FileNames[0]);
             Bitmap second = new Bitmap(FileNames[1]);
@@ -48,10 +48,10 @@ namespace porulyu.BotSender.Services.Main
                 firstResize.Dispose();
                 secondResize.Dispose();
 
-                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg", ImageFormat.Jpeg);
+                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg", ImageFormat.Jpeg);
                 newImage.Dispose();
 
-                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg";
+                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg";
             }
             else if (first.Width <= first.Height && second.Width <= second.Height)
             {
@@ -70,22 +70,22 @@ namespace porulyu.BotSender.Services.Main
                 firstResize.Dispose();
                 secondResize.Dispose();
 
-                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg", ImageFormat.Jpeg);
+                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg", ImageFormat.Jpeg);
                 newImage.Dispose();
 
-                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg";
+                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg";
             }
             else
             {
                 second.Dispose();
 
-                first.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg", ImageFormat.Jpeg);
+                first.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg", ImageFormat.Jpeg);
                 first.Dispose();
 
-                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg";
+                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg";
             }
         }
-        private string CombineThreeImage(List<string> FileNames, string Id, long ChatId)
+        private string CombineThreeImage(List<string> FileNames, string Id, long ChatId, string Site)
         {
             Bitmap first = new Bitmap(FileNames[0]);
             Bitmap second = new Bitmap(FileNames[1]);
@@ -112,10 +112,10 @@ namespace porulyu.BotSender.Services.Main
                 secondResize.Dispose();
                 thirdResize.Dispose();
 
-                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg", ImageFormat.Jpeg);
+                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg", ImageFormat.Jpeg);
                 newImage.Dispose();
 
-                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg";
+                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg";
             }
             else if (first.Width <= first.Height && second.Width <= second.Height && third.Width <= third.Height)
             {
@@ -138,10 +138,10 @@ namespace porulyu.BotSender.Services.Main
                 secondResize.Dispose();
                 thirdResize.Dispose();
 
-                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg", ImageFormat.Jpeg);
+                newImage.Save(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg", ImageFormat.Jpeg);
                 newImage.Dispose();
 
-                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Id}\Combine.jpg";
+                return Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}\Combine.jpg";
             }
             else
             {
@@ -149,7 +149,7 @@ namespace porulyu.BotSender.Services.Main
                 second.Dispose();
                 third.Dispose();
 
-                return CombineTwoImage(FileNames, Id, ChatId);
+                return CombineTwoImage(FileNames, Id, ChatId, Site);
             }
         }
     }

@@ -17,12 +17,12 @@ namespace porulyu.Infrastructure.Services
                 return await context.Complains.ToListAsync();
             }
         }
-        public async Task Create(long chatId, string Type, string Link)
+        public async Task Create(long chatId, string Type, string Ad, string Site)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
                 User user = await new OperationsUser().GetUser(chatId);
-                await context.Complains.AddAsync(new Domain.Models.Complain { DateCreate = DateTime.Now, UserId = user.Id, Type = Type, Link = Link });
+                await context.Complains.AddAsync(new Domain.Models.Complain { DateCreate = DateTime.Now, UserId = user.Id, Type = Type, Site = Site, Ad = Ad });
                 await context.SaveChangesAsync();
             }
         }

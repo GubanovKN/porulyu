@@ -16,6 +16,7 @@ namespace porulyu.Domain.Models
         public User User { get; set; }
 
         public string Type { get; set; }
-        public string Link { get; set; }
+        public string Site { get; set; }
+        public string Ad { get; set; }
     }
 }

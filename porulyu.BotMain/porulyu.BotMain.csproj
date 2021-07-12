@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E6869171-BC6D-433B-9676-F227627CE52A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>porulyu.Bot</RootNamespace>
+    <RootNamespace>porulyu.BotMain</RootNamespace>
     <AssemblyName>porulyu.BotMain</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -209,11 +209,12 @@
     <Compile Include="Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\OperationsBot.cs" />
-    <Compile Include="Services\OperationsCheckCar.cs" />
-    <Compile Include="Services\OperationsCreateMessagesBot.cs" />
-    <Compile Include="Services\OperationsData.cs" />
-    <Compile Include="Services\OperationsUnitpay.cs" />
+    <Compile Include="Services\Main\OperationsAd.cs" />
+    <Compile Include="Services\Main\OperationsBot.cs" />
+    <Compile Include="Services\Main\OperationsCheckCar.cs" />
+    <Compile Include="Services\Main\OperationsCreateMessagesBot.cs" />
+    <Compile Include="Services\Main\OperationsTimers.cs" />
+    <Compile Include="Services\Payments\OperationsUnitpay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

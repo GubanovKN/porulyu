@@ -1,4 +1,5 @@
 ﻿using NLog;
+using porulyu.BotSender.Services.Sities;
 using porulyu.BotSender.Services.Taskers;
 using porulyu.Domain.Models;
 using porulyu.Infrastructure.Services;
@@ -19,10 +20,7 @@ namespace porulyu.BotSender.Services.Main
         private List<TaskerMyCar> TaskersMyCar;
         private List<TaskerAster> TaskersAster;
 
-        System.Timers.Timer KrishaTimerFilters;
-        System.Timers.Timer OLXTimerFilters;
-        System.Timers.Timer MyCarTimerFilters;
-        System.Timers.Timer AsterTimerFilters;
+        System.Timers.Timer TimerFilters;
 
         public OperationsTimers()
         {
@@ -33,32 +31,20 @@ namespace porulyu.BotSender.Services.Main
             TaskersMyCar = new List<TaskerMyCar>();
             TaskersAster = new List<TaskerAster>();
 
-            KrishaTimerFilters = new System.Timers.Timer(10000);
-            KrishaTimerFilters.Elapsed += KrishaTimer_Elapsed;
-
-            OLXTimerFilters = new System.Timers.Timer(10000);
-            OLXTimerFilters.Elapsed += OLXTimer_Elapsed;
-
-            //MyCarTimerFilters = new System.Timers.Timer(10000);
-            //MyCarTimerFilters.Elapsed += OLXTimer_Elapsed;
-
-            //AsterTimerFilters = new System.Timers.Timer(10000);
-            //AsterTimerFilters.Elapsed += OLXTimer_Elapsed;
+            TimerFilters = new System.Timers.Timer(10000);
+            TimerFilters.Elapsed += Timer_Elapsed;
         }
 
         public void Start()
         {
-            KrishaTimerFilters.Start();
-            OLXTimerFilters.Start();
-            //MyCarTimerFilters.Start();
-            //AsterTimerFilters.Start();
+            TimerFilters.Start();
         }
 
-        private async void KrishaTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private async void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             try
             {
-                KrishaTimerFilters.Stop();
+                TimerFilters.Stop();
 
                 List<User> users = await new OperationsUser().GetUsers();
 
@@ -66,55 +52,178 @@ namespace porulyu.BotSender.Services.Main
                 {
                     if (users[i].Activate)
                     {
-                        if (users[i].DateExpired > DateTime.Now)
+                        foreach (var filter in users[i].Filters)
                         {
-                            foreach (var filter in users[i].Filters)
+                            if (filter.Work)
                             {
-                                if (filter.Work)
-                                {
-                                    TaskerKolesa temp = TaskersKolesa.FirstOrDefault(p => p.Filter.Id == filter.Id);
+                                Region region = null;
+                                City city = null;
 
-                                    if (temp == null)
+                                if (filter.RegionId != 0)
+                                {
+                                    region = await new OperationsRegion().Get(filter.RegionId);
+
+                                    if (filter.CityId != 0)
                                     {
-                                        temp = new TaskerKolesa(filter, users[i].ChatId);
-                                        await temp.Start();
-                                        TaskersKolesa.Add(temp);
-                                    }
-                                    else if (!temp.Status)
-                                    {
-                                        await temp.Start();
+                                        city = region.Cities.FirstOrDefault(p => p.Id == filter.CityId);
                                     }
                                 }
-                                else
-                                {
-                                    TaskerKolesa temp = TaskersKolesa.FirstOrDefault(p => p.Filter.Id == filter.Id);
 
-                                    if (temp != null)
+                                Mark mark = null;
+                                Model model = null;
+
+                                if (filter.MarkId != 0)
+                                {
+                                    mark = await new OperationsMark().Get(filter.MarkId);
+
+                                    if (filter.ModelId != 0)
                                     {
-                                        temp.Stop();
-                                        TaskersKolesa.Remove(temp);
+                                        model = mark.Models.FirstOrDefault(p => p.Id == filter.ModelId);
                                     }
                                 }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (users[i].RateId != 1)
-                        {
-                            users[i].RateId = 1;
 
-                            if (users[i].Filters.Count > users[i].Rate.CountFilters)
-                            {
-                                for (int j = users[i].Filters.Count; j > users[i].Rate.CountFilters; j--)
-                                {
-                                    await new OperationsFilter().DeleteFilter(users[i].Filters.ToList()[j]);
-                                }
+                                await CreateKolesa(filter, region, city, mark, model, users[i]);
+                                await CreateOLX(filter, region, city, mark, model, users[i]);
+                                await CreateAster(filter, region, city, mark, model, users[i]);
+                                await CreateMyCar(filter, region, city, mark, model, users[i]);
                             }
                         }
                     }
                 }
+                RemoveKolesa();
+                RemoveOLX();
+                RemoveAster();
+                RemoveMyCar();
 
+                TimerFilters.Start();
+            }
+            catch (Exception Ex)
+            {
+                TimerFilters.Start();
+                logger.Error(Ex.Message);
+            }
+        }
+
+        #region Создание задач
+        private async Task CreateKolesa(Filter filter, Region region, City city, Mark mark, Model model, User user)
+        {
+            try
+            {
+                if ((region == null || region.KolesaId != String.Empty) && (city == null || city.KolesaId != String.Empty) && (mark == null || mark.KolesaId != String.Empty) && (model == null || model.KolesaId != String.Empty))
+                {
+                    TaskerKolesa temp = TaskersKolesa.FirstOrDefault(p => p.Filter.Id == filter.Id);
+
+                    if (temp == null)
+                    {
+                        if (new OperationsKolesa().GetCountAds(filter, region, city, mark, model) != 0)
+                        {
+                            temp = new TaskerKolesa(filter, user.ChatId, region, city, mark, model);
+                            await temp.Start();
+                            TaskersKolesa.Add(temp);
+                        }
+                    }
+                    else if (!temp.Status && !temp.CanRemove)
+                    {
+                        await temp.Start();
+                    }
+                }
+            }
+            catch(Exception Ex)
+            {
+                logger.Error(Ex.Message);
+            }
+        }
+        private async Task CreateOLX(Filter filter, Region region, City city, Mark mark, Model model, User user)
+        {
+            try
+            {
+                if (filter.CustomsСleared == 0 && (region == null || region.OLXId != String.Empty) && (city == null || city.OLXId != String.Empty) && (mark == null || mark.OLXId != String.Empty) && (model == null || model.OLXId != String.Empty))
+                {
+                    TaskerOLX temp = TaskersOLX.FirstOrDefault(p => p.Filter.Id == filter.Id);
+
+                    if (temp == null)
+                    {
+                        if (new OperationsOLX().GetCountAds(filter, region, city, mark, model) != 0)
+                        {
+                            temp = new TaskerOLX(filter, user.ChatId, region, city, mark, model);
+                            await temp.Start();
+                            TaskersOLX.Add(temp);
+                        }
+                    }
+                    else if (!temp.Status && !temp.CanRemove)
+                    {
+                        await temp.Start();
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+            }
+        }
+        private async Task CreateAster(Filter filter, Region region, City city, Mark mark, Model model, User user)
+        {
+            try
+            {
+                if (filter.CustomsСleared == 0 && (region == null || region.AsterId != String.Empty) && (city == null || city.AsterId != String.Empty) && (mark == null || mark.AsterId != String.Empty) && (model == null || model.AsterId != String.Empty))
+                {
+                    TaskerAster temp = TaskersAster.FirstOrDefault(p => p.Filter.Id == filter.Id);
+
+                    if (temp == null)
+                    {
+                        if (new OperationsAster().GetCountAds(filter, region, city, mark, model) != 0)
+                        {
+                            temp = new TaskerAster(filter, user.ChatId, region, city, mark, model);
+                            await temp.Start();
+                            TaskersAster.Add(temp);
+                        }
+                    }
+                    else if (!temp.Status && !temp.CanRemove)
+                    {
+                        await temp.Start();
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+            }
+        }
+        private async Task CreateMyCar(Filter filter, Region region, City city, Mark mark, Model model, User user)
+        {
+            try
+            {
+                if (filter.CustomsСleared == 0 && filter.Transmission == 0 && filter.Actuator == 0 && filter.FirstEngineCapacity == 0 && filter.SecondEngineCapacity == 0 && (region == null || region.MyCarId != String.Empty) && (city == null || city.MyCarId != String.Empty) && (mark == null || mark.MyCarId != String.Empty) && (model == null || model.MyCarId != String.Empty))
+                {
+                    TaskerMyCar temp = TaskersMyCar.FirstOrDefault(p => p.Filter.Id == filter.Id);
+
+                    if (temp == null)
+                    {
+                        if (new OperationsMyCar().GetCountAds(filter, region, city, mark, model) != 0)
+                        {
+                            temp = new TaskerMyCar(filter, user.ChatId, region, city, mark, model);
+                            await temp.Start();
+                            TaskersMyCar.Add(temp);
+                        }
+                    }
+                    else if (!temp.Status && !temp.CanRemove)
+                    {
+                        await temp.Start();
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+            }
+        }
+        #endregion
+
+        #region Удаление задач
+        private void RemoveKolesa()
+        {
+            try
+            {
                 var RemoveTaskers = TaskersKolesa.FindAll(p => p.CanRemove);
 
                 foreach (var task in RemoveTaskers)
@@ -126,76 +235,16 @@ namespace porulyu.BotSender.Services.Main
 
                     TaskersKolesa.Remove(task);
                 }
-
-                KrishaTimerFilters.Start();
             }
-            catch (Exception Ex)
+            catch(Exception Ex)
             {
-                KrishaTimerFilters.Start();
                 logger.Error(Ex.Message);
             }
         }
-        private async void OLXTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void RemoveOLX()
         {
             try
             {
-                KrishaTimerFilters.Stop();
-
-                List<User> users = await new OperationsUser().GetUsers();
-
-                for (int i = 0; i < users.Count; i++)
-                {
-                    if (users[i].Activate)
-                    {
-                        if (users[i].DateExpired > DateTime.Now)
-                        {
-                            foreach (var filter in users[i].Filters)
-                            {
-                                if (filter.Work)
-                                {
-                                    TaskerOLX temp = TaskersOLX.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp == null)
-                                    {
-                                        temp = new TaskerOLX(filter, users[i].ChatId);
-                                        await temp.Start();
-                                        TaskersOLX.Add(temp);
-                                    }
-                                    else if (!temp.Status)
-                                    {
-                                        await temp.Start();
-                                    }
-                                }
-                                else
-                                {
-                                    TaskerOLX temp = TaskersOLX.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp != null)
-                                    {
-                                        temp.Stop();
-                                        TaskersOLX.Remove(temp);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (users[i].RateId != 1)
-                        {
-                            users[i].RateId = 1;
-
-                            if (users[i].Filters.Count > users[i].Rate.CountFilters)
-                            {
-                                for (int j = users[i].Filters.Count; j > users[i].Rate.CountFilters; j--)
-                                {
-                                    await new OperationsFilter().DeleteFilter(users[i].Filters.ToList()[j]);
-                                }
-                            }
-                        }
-                    }
-                }
-
                 var RemoveTaskers = TaskersOLX.FindAll(p => p.CanRemove);
 
                 foreach (var task in RemoveTaskers)
@@ -207,157 +256,16 @@ namespace porulyu.BotSender.Services.Main
 
                     TaskersOLX.Remove(task);
                 }
-
-                KrishaTimerFilters.Start();
             }
             catch (Exception Ex)
             {
-                KrishaTimerFilters.Start();
                 logger.Error(Ex.Message);
             }
         }
-        private async void MyCarTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void RemoveAster()
         {
             try
             {
-                KrishaTimerFilters.Stop();
-
-                List<User> users = await new OperationsUser().GetUsers();
-
-                for (int i = 0; i < users.Count; i++)
-                {
-                    if (users[i].Activate)
-                    {
-                        if (users[i].DateExpired > DateTime.Now)
-                        {
-                            foreach (var filter in users[i].Filters)
-                            {
-                                if (filter.Work)
-                                {
-                                    TaskerMyCar temp = TaskersMyCar.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp == null)
-                                    {
-                                        temp = new TaskerMyCar(filter, users[i].ChatId);
-                                        await temp.Start();
-                                        TaskersMyCar.Add(temp);
-                                    }
-                                    else if (!temp.Status)
-                                    {
-                                        await temp.Start();
-                                    }
-                                }
-                                else
-                                {
-                                    TaskerMyCar temp = TaskersMyCar.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp != null)
-                                    {
-                                        temp.Stop();
-                                        TaskersMyCar.Remove(temp);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (users[i].RateId != 1)
-                        {
-                            users[i].RateId = 1;
-
-                            if (users[i].Filters.Count > users[i].Rate.CountFilters)
-                            {
-                                for (int j = users[i].Filters.Count; j > users[i].Rate.CountFilters; j--)
-                                {
-                                    await new OperationsFilter().DeleteFilter(users[i].Filters.ToList()[j]);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                var RemoveTaskers = TaskersMyCar.FindAll(p => p.CanRemove);
-
-                foreach (var task in RemoveTaskers)
-                {
-                    if (task.Status)
-                    {
-                        task.Stop();
-                    }
-
-                    TaskersMyCar.Remove(task);
-                }
-
-                KrishaTimerFilters.Start();
-            }
-            catch (Exception Ex)
-            {
-                KrishaTimerFilters.Start();
-                logger.Error(Ex.Message);
-            }
-        }
-        private async void AsterTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            try
-            {
-                KrishaTimerFilters.Stop();
-
-                List<User> users = await new OperationsUser().GetUsers();
-
-                for (int i = 0; i < users.Count; i++)
-                {
-                    if (users[i].Activate)
-                    {
-                        if (users[i].DateExpired > DateTime.Now)
-                        {
-                            foreach (var filter in users[i].Filters)
-                            {
-                                if (filter.Work)
-                                {
-                                    TaskerAster temp = TaskersAster.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp == null)
-                                    {
-                                        temp = new TaskerAster(filter, users[i].ChatId);
-                                        await temp.Start();
-                                        TaskersAster.Add(temp);
-                                    }
-                                    else if (!temp.Status)
-                                    {
-                                        await temp.Start();
-                                    }
-                                }
-                                else
-                                {
-                                    TaskerAster temp = TaskersAster.FirstOrDefault(p => p.Filter.Id == filter.Id);
-
-                                    if (temp != null)
-                                    {
-                                        temp.Stop();
-                                        TaskersAster.Remove(temp);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (users[i].RateId != 1)
-                        {
-                            users[i].RateId = 1;
-
-                            if (users[i].Filters.Count > users[i].Rate.CountFilters)
-                            {
-                                for (int j = users[i].Filters.Count; j > users[i].Rate.CountFilters; j--)
-                                {
-                                    await new OperationsFilter().DeleteFilter(users[i].Filters.ToList()[j]);
-                                }
-                            }
-                        }
-                    }
-                }
-
                 var RemoveTaskers = TaskersAster.FindAll(p => p.CanRemove);
 
                 foreach (var task in RemoveTaskers)
@@ -369,14 +277,33 @@ namespace porulyu.BotSender.Services.Main
 
                     TaskersAster.Remove(task);
                 }
-
-                KrishaTimerFilters.Start();
             }
             catch (Exception Ex)
             {
-                KrishaTimerFilters.Start();
                 logger.Error(Ex.Message);
             }
         }
+        private void RemoveMyCar()
+        {
+            try
+            {
+                var RemoveTaskers = TaskersMyCar.FindAll(p => p.CanRemove);
+
+                foreach (var task in RemoveTaskers)
+                {
+                    if (task.Status)
+                    {
+                        task.Stop();
+                    }
+
+                    TaskersMyCar.Remove(task);
+                }
+            }
+            catch (Exception Ex)
+            {
+                logger.Error(Ex.Message);
+            }
+        }
+        #endregion
     }
 }

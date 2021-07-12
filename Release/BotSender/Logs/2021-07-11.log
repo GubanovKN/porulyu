@@ -1,0 +1,18 @@
+[2021-07-11 23:55:58.7866] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке
+[2021-07-11 23:56:27.7637] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-11 23:56:27.7817] [ERROR] System.Exception: Процесс не может получить доступ к файлу "0.webp", так как этот файл используется другим процессом. ---> System.Exception: Процесс не может получить доступ к файлу "0.webp", так как этот файл используется другим процессом. ---> System.IO.IOException: Процесс не может получить доступ к файлу "0.webp", так как этот файл используется другим процессом.
+   в System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   в System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   в System.IO.Directory.Delete(String path, Boolean recursive)
+   в porulyu.BotSender.Services.Main.OperationsBot.DeleteTemp(String Id, String ChatId, String Site) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Main\OperationsBot.cs:строка 271
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Main.OperationsBot.DeleteTemp(String Id, String ChatId, String Site) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Main\OperationsBot.cs:строка 275
+   в porulyu.BotSender.Services.Main.OperationsBot.<SendNewAd>d__15.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Main\OperationsBot.cs:строка 260
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Main.OperationsBot.<SendNewAd>d__15.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Main\OperationsBot.cs:строка 264
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Start>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 67
+[2021-07-11 23:56:53.4708] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке

@@ -20,6 +20,12 @@ namespace porulyu.BotSender.Services.Taskers
 
         public readonly Filter Filter;
         private readonly long ChatId;
+
+        private Region Region;
+        private City City;
+        private Mark Mark;
+        private Model Model;
+
         private System.Timers.Timer Timer;
 
         private Ad LastAd;
@@ -33,10 +39,14 @@ namespace porulyu.BotSender.Services.Taskers
         public bool Status;
         public bool CanRemove;
 
-        public TaskerKolesa(Filter Filter, long ChatId)
+        public TaskerKolesa(Filter Filter, long ChatId, Region Region, City City, Mark Mark, Model Model)
         {
             this.Filter = Filter;
             this.ChatId = ChatId;
+            this.Region = Region;
+            this.City = City;
+            this.Mark = Mark;
+            this.Model = Model;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -51,7 +61,7 @@ namespace porulyu.BotSender.Services.Taskers
                 OperationsFilter = new OperationsFilter();
                 OperationsKolesa = new OperationsKolesa();
 
-                LastAd = OperationsKolesa.GetLastAd(Filter, ChatId);
+                LastAd = OperationsKolesa.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
 
                 if (LastAd != null && LastAd.Id != Filter.LastIdAdKolesa)
                 {
@@ -87,7 +97,7 @@ namespace porulyu.BotSender.Services.Taskers
         {
             try
             {
-                if (await OperationsFilter.CheckFilter(Filter))
+                if (await OperationsFilter.CheckFilter(Filter) && new OperationsKolesa().GetCountAds(Filter, Region, City, Mark, Model) != 0)
                 {
                     CanStop = false;
 
@@ -95,7 +105,7 @@ namespace porulyu.BotSender.Services.Taskers
 
                     if (LastAd != null)
                     {
-                        List<Ad> NewAds = OperationsKolesa.GetNewAds(Filter, LastAd, ChatId);
+                        List<Ad> NewAds = OperationsKolesa.GetNewAds(Filter, LastAd, ChatId, Region, City, Mark, Model);
 
                         if (NewAds.Count > 0)
                         {
@@ -118,7 +128,7 @@ namespace porulyu.BotSender.Services.Taskers
                     }
                     else
                     {
-                        LastAd = OperationsKolesa.GetLastAd(Filter, ChatId);
+                        LastAd = OperationsKolesa.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
 
                         if (LastAd != null && LastAd.Id != Filter.LastIdAdKolesa)
                         {
@@ -136,15 +146,19 @@ namespace porulyu.BotSender.Services.Taskers
                 }
                 else
                 {
-                    Stop();
+                    CanStop = true;
                     CanRemove = true;
+                    Stop();
                 }
             }
             catch (Exception Ex)
             {
+                CanStop = true;
+
                 if (Ex.Message == "Forbidden: bot was blocked by the user")
                 {
                     await OperationsUser.Activate(ChatId, false);
+                    CanRemove = true;
                     Stop();
                 }
                 else
@@ -154,8 +168,6 @@ namespace porulyu.BotSender.Services.Taskers
 
                     Timer.Start();
                 }
-
-                CanStop = true;
             }
         }
 

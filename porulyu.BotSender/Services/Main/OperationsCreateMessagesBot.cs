@@ -86,21 +86,21 @@ namespace porulyu.BotSender.Services.Main
 
             if (!String.IsNullOrEmpty(ad.Discription))
             {
-                string check = $"{text}\n\nОписание владельца\n{ad.Discription}\n\nЦена - {ad.Price}\n\nИсточник - {ad.URL}";
+                string check = $"{text}\nОписание владельца\n{ad.Discription}\n\nЦена - {ad.Price}\n\nИсточник - {ad.URL}";
 
                 if ((check.Length >= 1024))
                 {
-                    text += $"\nОписание владельца\n{ad.Discription.Remove(ad.Discription.Length - (check.Length - 1023))}\n\n";
+                    text += $"\nОписание владельца\n{ad.Discription.Remove(ad.Discription.Length - (check.Length - 1023))}\n";
                 }
                 else
                 {
-                    text += $"\nОписание владельца\n{ad.Discription}\n\n";
+                    text += $"\nОписание владельца\n{ad.Discription}\n";
                 }
             }
 
             if (!String.IsNullOrEmpty(ad.Price))
             {
-                text += $"Цена - {ad.Price}\n\n";
+                text += $"\nЦена - {ad.Price}\n\n";
             }
 
             if (!String.IsNullOrEmpty(ad.URL))
@@ -110,9 +110,27 @@ namespace porulyu.BotSender.Services.Main
 
             return text;
         }
-        public InlineKeyboardButton[][] GetAdButtons(string Link)
+        public InlineKeyboardButton[][] GetAdButtons(string Id, string Site)
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[2][];
+
+            string Link = "";
+
+            switch (Site)
+            {
+                case "Kolesa":
+                    Link = "https://kolesa.kz/a/show/" + Id;
+                    break;
+                case "OLX":
+                    Link = "https://www.olx.kz/" + Id;
+                    break;
+                case "Aster":
+                    Link = "https://aster.kz/catalog/" + Id;
+                    break;
+                case "MyCar":
+                    Link = "https://mycar.kz/announcement/" + Id;
+                    break;
+            }
 
             inlineKeyboards[0] = new InlineKeyboardButton[]
             {
@@ -121,7 +139,7 @@ namespace porulyu.BotSender.Services.Main
             };
             inlineKeyboards[1] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Пожаловаться", $"Complains'{Link}")
+                InlineKeyboardButton.WithCallbackData("Пожаловаться", $"Complains'{Id}'{Site}")
             };
 
             return inlineKeyboards;
@@ -129,25 +147,25 @@ namespace porulyu.BotSender.Services.Main
         #endregion
 
         #region Отзывы
-        public InlineKeyboardButton[][] GetComplainsButtons(string Link)
+        public InlineKeyboardButton[][] GetComplainsButtons(string Id, string Site)
         {
             InlineKeyboardButton[][] inlineKeyboards = new InlineKeyboardButton[4][];
 
             inlineKeyboards[0] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Снято с публикации", $"ComplainExpired'{Link}")
+                InlineKeyboardButton.WithCallbackData("Снято с публикации", $"ComplainExpired'{Id}'{Site}")
             };
             inlineKeyboards[1] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Ошибки в объявлении", $"ComplainNotValid'{Link}")
+                InlineKeyboardButton.WithCallbackData("Ошибки в объявлении", $"ComplainNotValid'{Id}'{Site}")
             };
             inlineKeyboards[2] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Другое", $"ComplainOther'{Link}")
+                InlineKeyboardButton.WithCallbackData("Другое", $"ComplainOther'{Id}'{Site}")
             };
             inlineKeyboards[3] = new InlineKeyboardButton[]
             {
-                InlineKeyboardButton.WithCallbackData("Назад", $"Back'{Link}")
+                InlineKeyboardButton.WithCallbackData("Назад", $"Back'{Id}'{Site}")
             };
 
             return inlineKeyboards;

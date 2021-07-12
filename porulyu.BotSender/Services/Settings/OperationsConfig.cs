@@ -20,7 +20,6 @@ namespace porulyu.BotSender.Services.Settings
                 Constants.TimeoutLinks = Convert.ToInt32(doc.Element("Config").Element("TimeoutLinks").Value);
                 Constants.TimeoutPhones = Convert.ToInt32(doc.Element("Config").Element("TimeoutPhones").Value);
                 Constants.TimeoutImage = Convert.ToInt32(doc.Element("Config").Element("TimeoutImage").Value);
-                Constants.TimeoutBeforeSend = Convert.ToInt32(doc.Element("Config").Element("TimeoutBeforeSend").Value);
             }
             catch (Exception Ex)
             {

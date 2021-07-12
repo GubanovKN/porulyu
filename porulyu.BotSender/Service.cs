@@ -41,9 +41,6 @@ namespace porulyu.BotSender
             {
                 OperationsConfig operationsConfig = new OperationsConfig();
                 operationsConfig.Load();
-                OperationsData operationsData = new OperationsData();
-                operationsData.LoadRegions();
-                operationsData.LoadMarks();
                 OperationsBot operationsBot = new OperationsBot();
                 operationsBot.Load();
                 OperationsTimers operationsTimers = new OperationsTimers();

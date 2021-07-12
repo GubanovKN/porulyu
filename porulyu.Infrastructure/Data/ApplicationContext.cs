@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using porulyu.Domain.Models;
+using porulyu.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,6 +16,10 @@ namespace porulyu.Infrastructure.Data
         public DbSet<Report> Reports { get; set; }
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Mark> Marks { get; set; }
+        public DbSet<Model> Models { get; set; }
 
         public ApplicationContext()
         {
@@ -27,6 +32,57 @@ namespace porulyu.Infrastructure.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Region>()
+            .HasMany(t => t.Cities)
+            .WithOne(p => p.Region)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Mark>()
+            .HasMany(t => t.Models)
+            .WithOne(p => p.Mark)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+            .HasMany(t => t.Reports)
+            .WithOne(p => p.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+            .HasMany(t => t.Complains)
+            .WithOne(p => p.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+            .HasMany(t => t.Filters)
+            .WithOne(p => p.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+            .HasMany(t => t.Payments)
+            .WithOne(p => p.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Rate>()
+            .HasMany(t => t.Users)
+            .WithOne(p => p.Rate)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            List<Region> regions = new OperaitionsData().LoadRegions();
+
+            modelBuilder.Entity<Region>().HasData(regions);
+
+            List<City> cities = new OperaitionsData().LoadCities();
+
+            modelBuilder.Entity<City>().HasData(cities);
+
+            List<Mark> marks = new OperaitionsData().LoadMarks();
+
+            modelBuilder.Entity<Mark>().HasData(marks);
+
+            List<Model> models = new OperaitionsData().LoadModels();
+
+            modelBuilder.Entity<Model>().HasData(models);
+
             Rate[] Rates =
             {
                 new Rate

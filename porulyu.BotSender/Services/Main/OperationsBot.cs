@@ -100,25 +100,25 @@ namespace porulyu.BotSender.Services.Main
                         await SendReport(callbackQuery.Message);
                         break;
                     case "Complains":
-                        await SendComplains(callbackQuery.Message, Data[1]);
+                        await SendComplains(callbackQuery.Message, Data[1], Data[2]);
                         break;
                     case "ComplainExpired":
-                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1]);
+                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1], Data[2]);
                         await SendPopUp(callbackQuery.Id, "Выша жалоба принята!");
-                        await SendAd(callbackQuery.Message, Data[1]);
+                        await SendAd(callbackQuery.Message, Data[1], Data[2]);
                         break;
                     case "ComplainNotValid":
-                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1]);
+                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1], Data[2]);
                         await SendPopUp(callbackQuery.Id, "Выша жалоба принята!");
-                        await SendAd(callbackQuery.Message, Data[1]);
+                        await SendAd(callbackQuery.Message, Data[1], Data[2]);
                         break;
                     case "ComplainOther":
-                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1]);
+                        await new OperationsComplain().Create(callbackQuery.Message.Chat.Id, Data[0], Data[1], Data[2]);
                         await SendPopUp(callbackQuery.Id, "Выша жалоба принята!");
-                        await SendAd(callbackQuery.Message, Data[1]);
+                        await SendAd(callbackQuery.Message, Data[1], Data[2]);
                         break;
                     case "Back":
-                        await SendAd(callbackQuery.Message, Data[1]);
+                        await SendAd(callbackQuery.Message, Data[1], Data[2]);
                         break;
                 }
             }
@@ -155,9 +155,9 @@ namespace porulyu.BotSender.Services.Main
                 replyMarkup: inlineKeyboard
                 );
         }
-        private async Task SendComplains(Message message, string Link)
+        private async Task SendComplains(Message message, string Id, string Site)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetComplainsButtons(Link));
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetComplainsButtons(Id, Site));
 
             if (message.Text == null)
             {
@@ -178,9 +178,9 @@ namespace porulyu.BotSender.Services.Main
                     );
             }
         }
-        private async Task SendAd(Message message, string Link)
+        private async Task SendAd(Message message, string Id, string Site)
         {
-            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(Link));
+            var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(Id, Site));
 
             if (message.Text == null)
             {
@@ -212,11 +212,9 @@ namespace porulyu.BotSender.Services.Main
                 Encryption encryption = new Encryption();
                 Bot = new TelegramBotClient(encryption.DecryptRSA(Constants.BotSender.Token));
 
-                Thread.Sleep(Constants.TimeoutBeforeSend);
-
                 bool Send = false;
 
-                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(ad.URL));
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(ad.Id, Site));
 
                 while (!Send)
                 {
@@ -271,6 +269,45 @@ namespace porulyu.BotSender.Services.Main
             try
             {
                 Directory.Delete(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\{Site}\{Id}", true);
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception(Ex.Message, Ex);
+            }
+        }
+        public async Task SendInformation(string Text, long ChatId)
+        {
+            try
+            {
+                Encryption encryption = new Encryption();
+                Bot = new TelegramBotClient(encryption.DecryptRSA(Constants.BotSender.Token));
+
+                bool Send = false;
+
+                while (!Send)
+                {
+                    try
+                    {
+                        await Bot.SendTextMessageAsync(
+                            chatId: ChatId,
+                            text: Text,
+                            parseMode: ParseMode.Html
+                        );
+
+                        Send = true;
+                    }
+                    catch (Exception Ex)
+                    {
+                        if (Ex.Message == "Forbidden: bot was blocked by the user")
+                        {
+                            throw new Exception(Ex.Message, Ex);
+                        }
+                        else
+                        {
+                            Thread.Sleep(1000);
+                        }
+                    }
+                }
             }
             catch (Exception Ex)
             {

@@ -67,6 +67,18 @@ namespace porulyu.Infrastructure.Services
                 await context.SaveChangesAsync();
             }
         }
+        public async Task ExtendRateIdUser(Domain.Models.User user, Rate rate)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                user.Rate = rate;
+                user.DateExpired = user.DateExpired.AddDays(rate.CountDays);
+                user.CountReports += rate.CountReports;
+
+                context.Update(user);
+                await context.SaveChangesAsync();
+            }
+        }
         public async Task SetCountReportsUser(int Count, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())

@@ -5,7 +5,6 @@ using porulyu.Domain.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,13 +15,14 @@ namespace porulyu.BotSender.Services.Sities
 {
     public class OperationsKolesa
     {
-        public Ad GetLastAd(Filter filter, long ChatId)
+        #region Получение последнего объявления
+        public Ad GetLastAd(Filter filter, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
                 HtmlAgilityPack.HtmlDocument html = new HtmlAgilityPack.HtmlDocument();
 
-                string BaseUrl = CombineBaseURL(filter);
+                string BaseUrl = CombineBaseURL(filter, region, city, mark, model);
 
                 var client = new RestClient(BaseUrl);
 
@@ -33,15 +33,18 @@ namespace porulyu.BotSender.Services.Sities
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     html.LoadHtml(response.Content);
+
+                    int LastPage = 0;
+
                     var offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
 
                     var ad = offers.Descendants("div").FirstOrDefault(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0);
 
-                    for (int i = 0; ad == null && i < 5; i++)
+                    if (ad == null)
                     {
                         Thread.Sleep(Constants.TimeoutLinks);
 
-                        client = new RestClient(BaseUrl + $"&page={i + 2}");
+                        client = new RestClient(BaseUrl + $"&page={LastPage}");
 
                         client.Timeout = -1;
                         request = new RestRequest(Method.GET);
@@ -54,6 +57,93 @@ namespace porulyu.BotSender.Services.Sities
                             offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
 
                             ad = offers.Descendants("div").FirstOrDefault(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0);
+
+                            if (ad != null)
+                            {
+                                int checkPage = 0;
+
+                                int spliter = 1;
+                                if (LastPage > 100)
+                                {
+                                    spliter = 100;
+                                }
+                                else if (LastPage > 10)
+                                {
+                                    spliter = 10;
+                                }
+
+                                int untopPage = 0;
+
+                                bool Find = true;
+                                while (Find)
+                                {
+                                    Thread.Sleep(Constants.TimeoutLinks);
+
+                                    client = new RestClient(BaseUrl + $"&page={checkPage}");
+
+                                    client.Timeout = -1;
+                                    request = new RestRequest(Method.GET);
+                                    response = client.Execute(request);
+
+                                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                    {
+                                        html.LoadHtml(response.Content);
+
+                                        offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
+                                        ad = offers.Descendants("div").FirstOrDefault(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0);
+
+                                        if (ad != null)
+                                        {
+                                            untopPage = spliter;
+                                            checkPage -= spliter;
+
+                                            switch (spliter)
+                                            {
+                                                case 100:
+                                                    spliter = 10;
+                                                    break;
+                                                case 10:
+                                                    spliter = 1;
+                                                    break;
+                                                case 1:
+                                                    Find = false;
+                                                    break;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (checkPage + spliter < LastPage)
+                                            {
+                                                checkPage += spliter;
+                                            }
+                                            else
+                                            {
+                                                checkPage = LastPage;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Thread.Sleep(Constants.TimeoutLinks);
+
+                                client = new RestClient(BaseUrl);
+
+                                client.Timeout = -1;
+                                request = new RestRequest(Method.GET);
+                                response = client.Execute(request);
+
+                                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                {
+                                    html.LoadHtml(response.Content);
+
+                                    offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
+                                    ad = offers.Descendants("div").FirstOrDefault(p => p.GetAttributeValue("data-id", "") != "");
+                                }
+                            }
                         }
                     }
 
@@ -76,13 +166,16 @@ namespace porulyu.BotSender.Services.Sities
                 throw new Exception(Ex.Message, Ex);
             }
         }
-        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId)
+        #endregion
+
+        #region Получение новых объявлений
+        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
                 HtmlAgilityPack.HtmlDocument html = new HtmlAgilityPack.HtmlDocument();
 
-                string BaseUrl = CombineBaseURL(filter);
+                string BaseUrl = CombineBaseURL(filter, region, city, mark, model);
 
                 var client = new RestClient(BaseUrl);
 
@@ -93,15 +186,18 @@ namespace porulyu.BotSender.Services.Sities
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     html.LoadHtml(response.Content);
+
+                    int LastPage = 0;
+
                     var offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
 
-                    var ads = offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0).Select(p => p.GetAttributeValue("data-id", "")).ToList();
+                    List<string> ads = offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0).Select(p => p.GetAttributeValue("data-id", "")).ToList();
 
-                    for (int i = 0; i < 5; i++)
+                    if (ads.Count == 0)
                     {
                         Thread.Sleep(Constants.TimeoutLinks);
 
-                        client = new RestClient(BaseUrl + $"&page={i + 2}");
+                        client = new RestClient(BaseUrl + $"&page={LastPage}");
 
                         client.Timeout = -1;
                         request = new RestRequest(Method.GET);
@@ -112,9 +208,119 @@ namespace porulyu.BotSender.Services.Sities
                             html.LoadHtml(response.Content);
 
                             offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
                             ads.AddRange(offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0).Select(p => p.GetAttributeValue("data-id", "")).ToList());
+
+                            if (ads.Count != 0)
+                            {
+                                ads.Clear();
+
+                                int checkPage = 0;
+
+                                int spliter = 1;
+                                if (LastPage > 100)
+                                {
+                                    spliter = 100;
+                                }
+                                else if (LastPage > 10)
+                                {
+                                    spliter = 10;
+                                }
+
+                                int untopPage = 0;
+
+                                bool Find = true;
+                                while (Find)
+                                {
+                                    Thread.Sleep(Constants.TimeoutLinks);
+
+                                    client = new RestClient(BaseUrl + $"&page={checkPage}");
+
+                                    client.Timeout = -1;
+                                    request = new RestRequest(Method.GET);
+                                    response = client.Execute(request);
+
+                                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                    {
+                                        html.LoadHtml(response.Content);
+
+                                        offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
+                                        List<string> temp = offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0).Select(p => p.GetAttributeValue("data-id", "")).ToList();
+
+                                        if (temp.Count != 0)
+                                        {
+                                            untopPage = spliter;
+                                            checkPage -= spliter;
+
+                                            switch (spliter)
+                                            {
+                                                case 100:
+                                                    spliter = 10;
+                                                    break;
+                                                case 10:
+                                                    spliter = 1;
+                                                    break;
+                                                case 1:
+                                                    Find = false;
+                                                    ads.AddRange(temp);
+
+                                                    Thread.Sleep(Constants.TimeoutLinks);
+
+                                                    client = new RestClient(BaseUrl + $"&page={checkPage}");
+
+                                                    client.Timeout = -1;
+                                                    request = new RestRequest(Method.GET);
+                                                    response = client.Execute(request);
+
+                                                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                                    {
+                                                        html.LoadHtml(response.Content);
+
+                                                        offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
+                                                        ads.AddRange(offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "" && p.Descendants("div").Where(w => w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item up") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item fast-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item turbo-sale") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item vip") != -1 || w.GetAttributeValue("class", "").IndexOf("paid-services-icons__item hot") != -1).Count() == 0).Select(p => p.GetAttributeValue("data-id", "")).ToList());
+                                                    }
+
+                                                    break;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (checkPage + spliter < LastPage)
+                                            {
+                                                checkPage += spliter;
+                                            }
+                                            else
+                                            {
+                                                checkPage = LastPage;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Thread.Sleep(Constants.TimeoutLinks);
+
+                                client = new RestClient(BaseUrl);
+
+                                client.Timeout = -1;
+                                request = new RestRequest(Method.GET);
+                                response = client.Execute(request);
+
+                                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                {
+                                    html.LoadHtml(response.Content);
+
+                                    offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
+
+                                    ads = offers.Descendants("div").Where(p => p.GetAttributeValue("data-id", "") != "").Select(p => p.GetAttributeValue("data-id", "")).ToList();
+                                }
+                            }
                         }
                     }
+
 
                     List<string> links = new List<string>();
 
@@ -161,6 +367,9 @@ namespace porulyu.BotSender.Services.Sities
                 throw new Exception(Ex.Message, Ex);
             }
         }
+        #endregion
+
+        #region Работа с данными объявления
         public Ad GetDataAd(string link, long ChatId)
         {
             try
@@ -171,20 +380,8 @@ namespace porulyu.BotSender.Services.Sities
 
                 var client = new RestClient(link);
 
-                client.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 YaBrowser/21.3.3.230 Yowser/2.5 Safari/537.36";
-
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
-
-                request.AddHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
-                request.AddHeader("Accept-Encoding", "gzip, deflate, br");
-                request.AddHeader("Accept-Language", "ru,en;q=0.9");
-                request.AddHeader("Cache-Control", "max-age=0");
-                request.AddHeader("sec-fetch-dest", "document");
-                request.AddHeader("sec-fetch-mode", "navigate");
-                request.AddHeader("sec-fetch-site", "same-origin");
-                request.AddHeader("sec-fetch-user", "?1");
-                request.AddHeader("upgrade-insecure-requests", "1");
 
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -192,6 +389,7 @@ namespace porulyu.BotSender.Services.Sities
                     html.LoadHtml(response.Content);
 
                     string id = html.DocumentNode.Descendants("div").Where(p => p.Attributes.Where(j => j.Name == "data-id").Count() != 0).First().GetAttributeValue("data-id", null);
+
                     List<string> LinksPhotos = html.DocumentNode.Descendants("li").Where(p => p.GetAttributeValue("class", "") == "gallery__thumb").Select(p => p.Descendants("button").First().GetAttributeValue("data-href", null)).ToList();
 
                     if (LinksPhotos.Count == 0)
@@ -205,7 +403,7 @@ namespace porulyu.BotSender.Services.Sities
                         }
                     }
 
-                    string Title = html.DocumentNode.Descendants("h1").FirstOrDefault().InnerText.Trim('\n').Trim().Replace("  "," ");
+                    string Title = html.DocumentNode.Descendants("h1").FirstOrDefault().InnerText.Trim('\n').Trim().Replace("  ", " ");
 
                     var Params = html.DocumentNode.Descendants("div").Where(p => p.GetAttributeValue("class", "") == "offer__parameters").First().Descendants("dl").ToList();
 
@@ -220,12 +418,12 @@ namespace porulyu.BotSender.Services.Sities
                     string CustomsClearedKZ = "";
                     string State = "На ходу";
 
-                    for(int i = 0; i < Params.Count; i++)
+                    for (int i = 0; i < Params.Count; i++)
                     {
-                        switch(Params[i].Descendants("dt").First().GetAttributeValue("title", ""))
+                        switch (Params[i].Descendants("dt").First().GetAttributeValue("title", ""))
                         {
                             case "Город":
-                                City = Params[i].Descendants("dd").First().InnerText.Replace("\n","").Replace("\r","").Trim();
+                                City = Params[i].Descendants("dd").First().InnerText.Replace("\n", "").Replace("\r", "").Trim();
                                 break;
                             case "Кузов":
                                 Body = Params[i].Descendants("dd").First().InnerText.Replace("\n", "").Replace("\r", "").Trim();
@@ -315,56 +513,93 @@ namespace porulyu.BotSender.Services.Sities
 
                 for (int i = 0; i < Links.Count && i < 3; i++)
                 {
-                    Thread.Sleep(Constants.TimeoutImage);
+                    if (Links[i] != null)
+                    {
+                        Thread.Sleep(Constants.TimeoutImage);
 
-                    string link = Links[i];
-                    var client = new RestClient(Links[i]);
+                        string link = Links[i];
+                        var client = new RestClient(Links[i]);
 
-                    client.Timeout = -1;
-                    var request = new RestRequest(Method.GET);
+                        client.Timeout = -1;
+                        var request = new RestRequest(Method.GET);
 
-                    byte[] response = client.DownloadData(request);
+                        byte[] response = client.DownloadData(request);
 
-                    File.WriteAllBytes(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg", response);
+                        File.WriteAllBytes(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg", response);
 
-                    FileNames.Add(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg");
+                        FileNames.Add(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg");
+                    }
                 }
 
-                return new OperationsPhoto().Combine(FileNames, Id, ChatId);
+                return new OperationsPhoto().Combine(FileNames, Id, ChatId, "Kolesa");
             }
             catch (Exception Ex)
             {
                 throw new Exception(Ex.Message, Ex);
             }
         }
-        private string CombineBaseURL(Filter filter)
+        #endregion
+
+        #region Получение ссылки для поиска
+        private string CombineBaseURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
-            string url = Constants.BaseURL;
+            string url = Constants.KolesaBaseURL;
 
-            if (filter.MarkAlias != "All")
+            if (mark != null)
             {
-                url += filter.MarkAlias + "/";
+                url += mark.KolesaId + "/";
 
-                if (filter.ModelAlias != null && filter.ModelAlias != "All")
+                if (model != null)
                 {
-                    url += filter.ModelAlias + "/";
+                    url += model.KolesaId + "/";
                 }
             }
 
-            if (filter.RegionAlias != "All")
+            if (region != null)
             {
-                if (filter.CityAlias != null && filter.CityAlias != "All")
+                if (city != null)
                 {
-                    url += filter.CityAlias + "/";
+                    url += city.KolesaId + "/";
                 }
                 else
                 {
-                    url += filter.RegionAlias + "/";
+                    url += region.KolesaId + "/";
                 }
             }
 
             url += "?";
 
+            if (filter.CustomsСleared == 1)
+            {
+                url += $"auto-custom=2&";
+            }
+            if (filter.Transmission != 0)
+            {
+                switch (filter.Transmission)
+                {
+                    case 1:
+                        url += $"auto-car-transm=2345&";
+                        break;
+                    case 2:
+                        url += $"auto-car-transm=1&";
+                        break;
+                }
+            }
+            if (filter.Actuator != 0)
+            {
+                switch (filter.Actuator)
+                {
+                    case 1:
+                        url += $"car-dwheel=1&";
+                        break;
+                    case 2:
+                        url += $"car-dwheel=2&";
+                        break;
+                    case 3:
+                        url += $"car-dwheel=3&";
+                        break;
+                }
+            }
             if (filter.FirstYear != 0)
             {
                 url += $"year[from]={filter.FirstYear}&";
@@ -381,8 +616,126 @@ namespace porulyu.BotSender.Services.Sities
             {
                 url += $"price[to]={filter.SecondPrice}&";
             }
+            if (filter.FirstEngineCapacity != 0)
+            {
+                url += $"auto-car-volume[from]={filter.FirstEngineCapacity}&";
+            }
+            if (filter.SecondEngineCapacity != 0)
+            {
+                url += $"auto-car-volume[to]={filter.SecondEngineCapacity}&";
+            }
+            if (filter.Mileage != 0)
+            {
+                url += $"auto-run[to]={filter.Mileage}&";
+            }
 
             return url;
         }
+        #endregion
+
+        #region Получение количества объявлений
+        public int GetCountAds(Filter filter, Region region, City city, Mark mark, Model model)
+        {
+            var client = new RestClient(CombineCountSearchURL(filter, region, city, mark, model));
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("X-Requested-With", "XMLHttpRequest");
+            IRestResponse response = client.Execute(request);
+
+            dynamic content = JsonConvert.DeserializeObject(response.Content);
+
+            return content.nbCnt;
+        }
+        private string CombineCountSearchURL(Filter filter, Region region, City city, Mark mark, Model model)
+        {
+            string url = Constants.KolesaCountSearchURL;
+
+            if (mark != null)
+            {
+                url += mark.KolesaId + "/";
+
+                if (model != null)
+                {
+                    url += model.KolesaId + "/";
+                }
+            }
+
+            if (region != null)
+            {
+                if (city != null)
+                {
+                    url += city.KolesaId + "/";
+                }
+                else
+                {
+                    url += region.KolesaId + "/";
+                }
+            }
+
+            url += "?";
+
+            if (filter.CustomsСleared == 1)
+            {
+                url += $"auto-custom=2&";
+            }
+            if (filter.Transmission != 0)
+            {
+                switch (filter.Transmission)
+                {
+                    case 1:
+                        url += $"auto-car-transm=2345&";
+                        break;
+                    case 2:
+                        url += $"auto-car-transm=1&";
+                        break;
+                }
+            }
+            if (filter.Actuator != 0)
+            {
+                switch (filter.Actuator)
+                {
+                    case 1:
+                        url += $"car-dwheel=1&";
+                        break;
+                    case 2:
+                        url += $"car-dwheel=2&";
+                        break;
+                    case 3:
+                        url += $"car-dwheel=3&";
+                        break;
+                }
+            }
+            if (filter.FirstYear != 0)
+            {
+                url += $"year[from]={filter.FirstYear}&";
+            }
+            if (filter.SecondYear != 0)
+            {
+                url += $"year[to]={filter.SecondYear}&";
+            }
+            if (filter.FirstPrice != 0)
+            {
+                url += $"price[from]={filter.FirstPrice}&";
+            }
+            if (filter.SecondPrice != 0)
+            {
+                url += $"price[to]={filter.SecondPrice}&";
+            }
+            if (filter.FirstEngineCapacity != 0)
+            {
+                url += $"auto-car-volume[from]={filter.FirstEngineCapacity}&";
+            }
+            if (filter.SecondEngineCapacity != 0)
+            {
+                url += $"auto-car-volume[to]={filter.SecondEngineCapacity}&";
+            }
+            if (filter.Mileage != 0)
+            {
+                url += $"auto-run[to]={filter.Mileage}&";
+            }
+
+            return url;
+        }
+        #endregion
     }
 }

@@ -24,41 +24,41 @@ namespace porulyu.Infrastructure.Services
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SaveRegionAliasFilter(string Data, Domain.Models.User user)
+        public async Task SaveRegionIdFilter(string Data, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                user.Filters.Last().RegionAlias = Data;
+                user.Filters.Last().RegionId = Convert.ToInt32(Data);
 
                 context.Update(user.Filters.Last());
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SaveCityAliasFilter(string Data, Domain.Models.User user)
+        public async Task SaveCityIdFilter(string Data, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                user.Filters.Last().CityAlias = Data;
+                user.Filters.Last().CityId = Convert.ToInt32(Data);
 
                 context.Update(user.Filters.Last());
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SaveMarkAliasFilter(string Data, Domain.Models.User user)
+        public async Task SaveMarkIdFilter(string Data, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                user.Filters.Last().MarkAlias = Data;
+                user.Filters.Last().MarkId = Convert.ToInt32(Data);
 
                 context.Update(user.Filters.Last());
                 await context.SaveChangesAsync();
             }
         }
-        public async Task SaveModelAliasFilter(string Data, Domain.Models.User user)
+        public async Task SaveModelIdFilter(string Data, Domain.Models.User user)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                user.Filters.Last().ModelAlias = Data;
+                user.Filters.Last().ModelId = Convert.ToInt32(Data);
 
                 context.Update(user.Filters.Last());
                 await context.SaveChangesAsync();
@@ -132,9 +132,6 @@ namespace porulyu.Infrastructure.Services
             {
                 switch (Data)
                 {
-                    case "No":
-                        user.Filters.Last().CustomsСleared = -1;
-                        break;
                     case "Clear":
                         user.Filters.Last().CustomsСleared = 0;
                         break;
@@ -230,21 +227,7 @@ namespace porulyu.Infrastructure.Services
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
-                    string[] ranges = Text.Replace(" ", "").Split('-');
-
-                    if (String.IsNullOrEmpty(ranges[0]) && !String.IsNullOrEmpty(ranges[1]))
-                    {
-                        user.Filters.Last().SecondMileage = Convert.ToInt32(ranges[1]);
-                    }
-                    else if (!String.IsNullOrEmpty(ranges[0]) && String.IsNullOrEmpty(ranges[1]))
-                    {
-                        user.Filters.Last().FirstMileage = Convert.ToInt32(ranges[0]);
-                    }
-                    else
-                    {
-                        user.Filters.Last().FirstMileage = Convert.ToInt32(ranges[0]);
-                        user.Filters.Last().SecondMileage = Convert.ToInt32(ranges[1]);
-                    }
+                    user.Filters.Last().Mileage = Convert.ToInt32(Text);
 
                     context.Update(user.Filters.Last());
                     await context.SaveChangesAsync();

@@ -12,18 +12,17 @@ namespace porulyu.BotMain.Common
     {
         public static string PathBots = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Bots.conf";
 
-        public static string PathDataRegionsAndCities = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Data\RegionsAndCities.conf";
-        public static string PathDataMarksAndModels = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Data\MarksAndModels.conf";
-
         public static string PathCheckCar = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\CheckCar.conf";
 
         public static string PathUnitpay = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Unitpay.conf";
 
-        public static List<Region> Regions = new List<Region>();
-        public static List<Mark> Marks = new List<Mark>();
-
         public static Domain.Models.Bot BotMain = new Domain.Models.Bot();
         public static Domain.Models.Bot BotSender = new Domain.Models.Bot();
+
+        public static string CountSearchKolesaURL = "https://kolesa.kz/a/ajax-get-search-nb-results/cars/";
+        public static string CountSearchOLXURL = "https://m.olx.kz/api/v1/offers/metadata/search/?";
+        public static string CountSearchAsterURL = "https://aster.kz/rest/ads/countByFilter";
+        public static string CountSearchMyCarURL = "https://cars.mycar.kz/api/publications/?";
 
         public static string CheckCarUserName = "";
         public static string CheckCarPassword = "";
