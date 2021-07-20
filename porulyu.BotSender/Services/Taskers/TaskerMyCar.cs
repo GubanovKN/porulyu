@@ -27,11 +27,10 @@ namespace porulyu.BotSender.Services.Taskers
 
         private System.Timers.Timer Timer;
 
-        private Ad LastAd;
-
         private OperationsBot OperationsBot;
         private OperationsUser OperationsUser;
         private OperationsFilter OperationsFilter;
+        private OperationsAd OperationsAd;
         private OperationsMyCar OperationsMyCar;
 
         private bool CanStop;
@@ -58,17 +57,16 @@ namespace porulyu.BotSender.Services.Taskers
                 OperationsBot = new OperationsBot();
                 OperationsUser = new OperationsUser();
                 OperationsFilter = new OperationsFilter();
+                OperationsAd = new OperationsAd();
                 OperationsMyCar = new OperationsMyCar();
 
-                LastAd = OperationsMyCar.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
+                Ad LastAd = OperationsMyCar.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
 
-                if (LastAd != null && LastAd.Id != Filter.LastIdAdMyCar)
+                if (OperationsAd.GetByFilter(Filter, "MyCar").FirstOrDefault(p => p.SiteId == LastAd.SiteId) == null)
                 {
-                    await OperationsBot.SendNewAd(LastAd, ChatId, "MyCar");
+                    await OperationsBot.SendNewAd(LastAd, ChatId);
 
-                    Filter.LastIdAdMyCar = LastAd.Id;
-
-                    await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
+                    await OperationsAd.Create(LastAd, Filter);
                 }
 
                 Timer = new System.Timers.Timer(Constants.TimeoutUpdate);
@@ -102,42 +100,7 @@ namespace porulyu.BotSender.Services.Taskers
 
                     Timer.Stop();
 
-                    if (LastAd != null)
-                    {
-                        List<Ad> NewAds = OperationsMyCar.GetNewAds(Filter, LastAd, ChatId, Region, City, Mark, Model);
-
-                        if (NewAds.Count > 0)
-                        {
-                            if (Directory.Exists($@"Temp\{ChatId}\MyCar\{LastAd.Id}"))
-                            {
-                                Directory.Delete($@"Temp\{ChatId}\MyCar\{LastAd.Id}", true);
-                            }
-
-                            LastAd = NewAds[0];
-
-                            Filter.LastIdAdMyCar = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-
-                            for (int i = NewAds.Count - 1; -1 < i; i--)
-                            {
-                                await OperationsBot.SendNewAd(NewAds[i], ChatId, "MyCar");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        LastAd = OperationsMyCar.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
-
-                        if (LastAd != null && LastAd.Id != Filter.LastIdAdMyCar)
-                        {
-                            await OperationsBot.SendNewAd(LastAd, ChatId, "MyCar");
-
-                            Filter.LastIdAdMyCar = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-                        }
-                    }
+                    await OperationsMyCar.GetNewAds(Filter, OperationsAd.GetByFilter(Filter, "MyCar"), ChatId, Region, City, Mark, Model);
 
                     Timer.Start();
 

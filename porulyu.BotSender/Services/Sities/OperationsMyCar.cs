@@ -2,6 +2,7 @@
 using porulyu.BotSender.Common;
 using porulyu.BotSender.Services.Main;
 using porulyu.Domain.Models;
+using porulyu.Infrastructure.Services;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,8 @@ namespace porulyu.BotSender.Services.Sities
 
                         return new Ad
                         {
-                            Id = ad.id.ToString(),
+                            Site = "MyCar",
+                            SiteId = ad.id.ToString(),
                             PhotosFileName = GetPhotos(Links, ad.id.ToString(), ChatId),
                             Title = Title,
                             City = ad.city_info.name.ToString(),
@@ -98,7 +100,7 @@ namespace porulyu.BotSender.Services.Sities
         #endregion
 
         #region Получение новых объявлений
-        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId, Region region, City city, Mark mark, Model model)
+        public async Task GetNewAds(Filter filter, List<Ad> Ads, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
@@ -120,7 +122,7 @@ namespace porulyu.BotSender.Services.Sities
 
                         foreach (var ad in content.results)
                         {
-                            if (ad.id.ToString() != lastAd.Id)
+                            if (Ads.FirstOrDefault(p => p.SiteId == ad.id.ToString() && p.Site == "MyCar") == null)
                             {
                                 List<string> Links = new List<string>();
 
@@ -152,9 +154,10 @@ namespace porulyu.BotSender.Services.Sities
                                     }
                                 }
 
-                                NewAds.Add(new Ad
+                                Ad NewAd = new Ad
                                 {
-                                    Id = ad.id.ToString(),
+                                    Site = "MyCar",
+                                    SiteId = ad.id.ToString(),
                                     PhotosFileName = GetPhotos(Links, ad.id.ToString(), ChatId),
                                     Title = Title,
                                     City = ad.city_info.name.ToString(),
@@ -164,15 +167,17 @@ namespace porulyu.BotSender.Services.Sities
                                     Actuator = Actuator,
                                     Price = Price,
                                     URL = $"https://mycar.kz/announcement/{ad.id.ToString()}"
-                                });
+                                };
+
+                                await new OperationsBot().SendNewAd(NewAd, ChatId);
+
+                                await new OperationsAd().Create(NewAd, filter);
                             }
                             else
                             {
                                 break;
                             }
                         }
-
-                        return NewAds;
                     }
                     else
                     {

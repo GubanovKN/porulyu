@@ -28,10 +28,15 @@ namespace porulyu.BotMain.Services.Payments
                         Price = Constants.CheckCarPrice;
                         Desc = $"Покупка отчета № {ActionId}";
                         break;
-                    case "rate":
-                        Rate rate = await new OperationsRate().Get(ActionId.ToString());
-                        Price = rate.Price;
-                        Desc = $"Оплата тарифа {rate.Name}";
+                    case "rateSet":
+                        Rate rateSet = await new OperationsRate().Get(ActionId.ToString());
+                        Price = rateSet.Price;
+                        Desc = $"Изменение тарифа {rateSet.Name}";
+                        break;
+                    case "rateExtend":
+                        Rate rateExtend = await new OperationsRate().Get(ActionId.ToString());
+                        Price = rateExtend.Price;
+                        Desc = $"Продление тарифа {rateExtend.Name}";
                         break;
                 }
 

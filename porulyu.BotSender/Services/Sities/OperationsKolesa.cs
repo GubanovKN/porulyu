@@ -2,6 +2,7 @@
 using porulyu.BotSender.Common;
 using porulyu.BotSender.Services.Main;
 using porulyu.Domain.Models;
+using porulyu.Infrastructure.Services;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace porulyu.BotSender.Services.Sities
                 {
                     html.LoadHtml(response.Content);
 
-                    int LastPage = 0;
+                    int LastPage = Convert.ToInt32(html.DocumentNode.Descendants("div").Where(p => p.GetAttributeValue("class", "") == "pager").First().Descendants("ul").First().Descendants("li").Last().InnerText);
 
                     var offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
 
@@ -95,7 +96,7 @@ namespace porulyu.BotSender.Services.Sities
 
                                         if (ad != null)
                                         {
-                                            untopPage = spliter;
+                                            untopPage = checkPage;
                                             checkPage -= spliter;
 
                                             switch (spliter)
@@ -169,7 +170,7 @@ namespace porulyu.BotSender.Services.Sities
         #endregion
 
         #region Получение новых объявлений
-        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId, Region region, City city, Mark mark, Model model)
+        public async Task GetNewAds(Filter filter, List<Ad> Ads, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
@@ -187,7 +188,7 @@ namespace porulyu.BotSender.Services.Sities
                 {
                     html.LoadHtml(response.Content);
 
-                    int LastPage = 0;
+                    int LastPage = Convert.ToInt32(html.DocumentNode.Descendants("div").Where(p => p.GetAttributeValue("class", "") == "pager").First().Descendants("ul").First().Descendants("li").Last().InnerText);
 
                     var offers = html.DocumentNode.Descendants("div").Where(p => p.Id == "results").First();
 
@@ -250,7 +251,7 @@ namespace porulyu.BotSender.Services.Sities
 
                                         if (temp.Count != 0)
                                         {
-                                            untopPage = spliter;
+                                            untopPage = checkPage;
                                             checkPage -= spliter;
 
                                             switch (spliter)
@@ -267,7 +268,7 @@ namespace porulyu.BotSender.Services.Sities
 
                                                     Thread.Sleep(Constants.TimeoutLinks);
 
-                                                    client = new RestClient(BaseUrl + $"&page={checkPage}");
+                                                    client = new RestClient(BaseUrl + $"&page={untopPage + 1}");
 
                                                     client.Timeout = -1;
                                                     request = new RestRequest(Method.GET);
@@ -328,7 +329,7 @@ namespace porulyu.BotSender.Services.Sities
                     {
                         string link = $"https://kolesa.kz/a/show/{ads[i]}";
 
-                        if (ads[i] != lastAd.Id)
+                        if (Ads.FirstOrDefault(p => p.SiteId == ads[i] && p.Site == "Kolesa") == null)
                         {
                             links.Add(link);
                         }
@@ -338,24 +339,14 @@ namespace porulyu.BotSender.Services.Sities
                         }
                     }
 
-                    List<Ad> NewAds = new List<Ad>();
-
-                    if (links.Count == ads.Count && ads.Count >= 3)
+                    for (int i = links.Count - 1; i >= 0; i--)
                     {
-                        for (int i = 0; i < 3; i++)
-                        {
-                            NewAds.Add(GetDataAd(links[i], ChatId));
-                        }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < links.Count; i++)
-                        {
-                            NewAds.Add(GetDataAd(links[i], ChatId));
-                        }
-                    }
+                        Ad NewAd = GetDataAd(links[i], ChatId);
 
-                    return NewAds;
+                        await new OperationsBot().SendNewAd(NewAd, ChatId);
+
+                        await new OperationsAd().Create(NewAd, filter);
+                    }
                 }
                 else
                 {
@@ -461,13 +452,16 @@ namespace porulyu.BotSender.Services.Sities
                     {
                         var _descriptions = html.DocumentNode.Descendants("div").Where(p => p.Attributes.Where(j => j.Value == "offer__description").Count() != 0).FirstOrDefault().Descendants("div").Where(p => p.GetAttributeValue("class", "") == "text").ToList();
 
-                        if (_descriptions.Count == 1)
+                        if (_descriptions.Count > 0)
                         {
-                            Discription = _descriptions[0].InnerText.Trim('\n').Trim().Replace("&quot;", "\"");
-                        }
-                        else
-                        {
-                            Discription = _descriptions[1].InnerText.Trim('\n').Trim().Replace("&quot;", "\"");
+                            if (_descriptions.Count == 1)
+                            {
+                                Discription = _descriptions[0].InnerText.Trim('\n').Trim().Replace("&quot;", "\"");
+                            }
+                            else
+                            {
+                                Discription = _descriptions[1].InnerText.Trim('\n').Trim().Replace("&quot;", "\"");
+                            }
                         }
                     }
 
@@ -475,7 +469,8 @@ namespace porulyu.BotSender.Services.Sities
 
                     return new Ad
                     {
-                        Id = id,
+                        SiteId = id,
+                        Site = "Kolesa",
                         PhotosFileName = GetPhotos(LinksPhotos, id, ChatId),
                         Title = Title,
                         City = City,
@@ -513,7 +508,7 @@ namespace porulyu.BotSender.Services.Sities
 
                 for (int i = 0; i < Links.Count && i < 3; i++)
                 {
-                    if (Links[i] != null)
+                    try
                     {
                         Thread.Sleep(Constants.TimeoutImage);
 
@@ -528,6 +523,10 @@ namespace porulyu.BotSender.Services.Sities
                         File.WriteAllBytes(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg", response);
 
                         FileNames.Add(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + $@"\Temp\{ChatId}\Kolesa\{Id}\{i}.jpg");
+                    }
+                    catch
+                    {
+                        continue;
                     }
                 }
 

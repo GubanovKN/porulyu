@@ -2,6 +2,7 @@
 using porulyu.BotSender.Common;
 using porulyu.BotSender.Services.Main;
 using porulyu.Domain.Models;
+using porulyu.Infrastructure.Services;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace porulyu.BotSender.Services.Sities
 {
@@ -25,7 +27,7 @@ namespace porulyu.BotSender.Services.Sities
                 var client = new RestClient(BaseURL);
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
-                request.AddHeader("Authorization", "Bearer 08b6305556c81a96245743e4b749c60d5e172686");
+                request.AddHeader("Authorization", $"Bearer {Constants.OLXAccessToken}");
                 IRestResponse response = client.Execute(request);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -88,7 +90,8 @@ namespace porulyu.BotSender.Services.Sities
 
                                 return new Ad
                                 {
-                                    Id = ad.id.ToString(),
+                                    Site = "OLX",
+                                    SiteId = ad.id.ToString(),
                                     PhotosFileName = GetPhotos(Links, ad.id.ToString(), ChatId),
                                     Title = Title,
                                     City = ad.location.city.name.ToString(),
@@ -113,6 +116,10 @@ namespace porulyu.BotSender.Services.Sities
                         throw new Exception("По заданному фильтру ничего не найдено");
                     }
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    throw new Exception("Need refresh token");
+                }
                 else
                 {
                     throw new Exception("OLX Api не доступен");
@@ -126,7 +133,7 @@ namespace porulyu.BotSender.Services.Sities
         #endregion
 
         #region Получение новых объявлений
-        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId, Region region, City city, Mark mark, Model model)
+        public async Task GetNewAds(Filter filter, List<Ad> Ads, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
@@ -135,7 +142,7 @@ namespace porulyu.BotSender.Services.Sities
                 var client = new RestClient(BaseURL);
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
-                request.AddHeader("Authorization", "Bearer 08b6305556c81a96245743e4b749c60d5e172686");
+                request.AddHeader("Authorization", $"Bearer {Constants.OLXAccessToken}");
                 IRestResponse response = client.Execute(request);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -149,7 +156,7 @@ namespace porulyu.BotSender.Services.Sities
                         {
                             if (!Convert.ToBoolean(ad.promotion.b2c_ad_page) && !Convert.ToBoolean(ad.promotion.highlighted) && !Convert.ToBoolean(ad.promotion.premium_ad_page) && !Convert.ToBoolean(ad.promotion.top_ad) && !Convert.ToBoolean(ad.promotion.urgent))
                             {
-                                if (ad.id.ToString() != lastAd.Id)
+                                if (Ads.FirstOrDefault(p => p.SiteId == ad.id.ToString() && p.Site == "OLX") == null)
                                 {
                                     List<string> Links = new List<string>();
 
@@ -199,12 +206,13 @@ namespace porulyu.BotSender.Services.Sities
                                         }
                                     }
 
-                                    NewAds.Add(new Ad
+                                    Ad NewAd = new Ad
                                     {
-                                        Id = ad.id,
+                                        Site = "OLX",
+                                        SiteId = ad.id.ToString(),
                                         PhotosFileName = GetPhotos(Links, ad.id.ToString(), ChatId),
                                         Title = Title,
-                                        City = ad.location.city.name,
+                                        City = ad.location.city.name.ToString(),
                                         Body = Body,
                                         EngineCapacity = EngineCapacity,
                                         Mileage = Mileage,
@@ -212,10 +220,14 @@ namespace porulyu.BotSender.Services.Sities
                                         Color = Color,
                                         Actuator = Actuator,
                                         State = State,
-                                        Discription = ad.description,
+                                        Discription = ad.description.ToString(),
                                         Price = Price,
-                                        URL = ad.url
-                                    });
+                                        URL = ad.url.ToString()
+                                    };
+
+                                    await new OperationsBot().SendNewAd(NewAd, ChatId);
+
+                                    await new OperationsAd().Create(NewAd, filter);
                                 }
                                 else
                                 {
@@ -223,18 +235,15 @@ namespace porulyu.BotSender.Services.Sities
                                 }
                             }
                         }
-
-                        //if (CountAds == NewAds.Count && NewAds.Count >= 3)
-                        //{
-                        //    NewAds.RemoveRange(3, NewAds.Count - 3);
-                        //}
-
-                        return NewAds;
                     }
                     else
                     {
                         throw new Exception("По заданному фильтру ничего не найдено");
                     }
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    throw new Exception("Need refresh token");
                 }
                 else
                 {
@@ -279,7 +288,7 @@ namespace porulyu.BotSender.Services.Sities
             {
                 throw new Exception(Ex.Message, Ex);
             }
-        } 
+        }
         #endregion
 
         #region Получение ссылки для поиска
@@ -355,12 +364,23 @@ namespace porulyu.BotSender.Services.Sities
             var client = new RestClient(CombineCountSearchOLXURL(filter, region, city, mark, model));
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", "Bearer 2ea3256734b100b12a7076ab7aa7edc48e1aa993");
+            request.AddHeader("Authorization", $"Bearer {Constants.OLXAccessToken}");
             IRestResponse response = client.Execute(request);
 
-            dynamic content = JsonConvert.DeserializeObject(response.Content);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                dynamic content = JsonConvert.DeserializeObject(response.Content);
 
-            return content.data.total_count;
+                return content.data.total_count;
+            }
+            else if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                throw new Exception("Need refresh token");
+            }
+            else
+            {
+                throw new Exception("OLX Api не доступен");
+            }
         }
         private string CombineCountSearchOLXURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
@@ -425,7 +445,38 @@ namespace porulyu.BotSender.Services.Sities
             }
 
             return url;
-        } 
+        }
+        #endregion
+
+        #region Обновления токена
+        public void RefreshToken()
+        {
+            XDocument doc = XDocument.Load(Constants.PathOLX);
+
+            var client = new RestClient("https://m.olx.kz/api/open/oauth/token/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AlwaysMultipartFormData = true;
+
+            request.AddParameter("client_id", doc.Element("Params").Element("ClientId").Value);
+            request.AddParameter("scope", doc.Element("Params").Element("Scope").Value);
+            request.AddParameter("grant_type", doc.Element("Params").Element("GrantType").Value);
+            request.AddParameter("client_secret", doc.Element("Params").Element("ClientSecret").Value);
+            request.AddParameter("refresh_token", doc.Element("Params").Element("RefreshToken").Value);
+
+            IRestResponse response = client.Execute(request);
+            
+            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                dynamic content = JsonConvert.DeserializeObject(response.Content);
+
+                Constants.OLXAccessToken = content.access_token.ToString();
+            }
+            else
+            {
+                throw new Exception("Error getting new token for autorize");
+            }
+        }
         #endregion
     }
 }

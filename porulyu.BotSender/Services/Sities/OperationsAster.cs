@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using porulyu.BotSender.Common;
 using porulyu.BotSender.Services.Main;
 using porulyu.Domain.Models;
+using porulyu.Infrastructure.Services;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -41,26 +42,6 @@ namespace porulyu.BotSender.Services.Sities
 
                     var ad = offers.Descendants("a").FirstOrDefault(p => p.GetAttributeValue("class", "") == "car__link").GetAttributeValue("href", "");
 
-                    for (int i = 0; ad == null && i < 5; i++)
-                    {
-                        Thread.Sleep(Constants.TimeoutLinks);
-
-                        client = new RestClient(BaseUrl + $"&page={i + 2}");
-
-                        client.Timeout = -1;
-                        request = new RestRequest(Method.GET);
-                        response = client.Execute(request);
-
-                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                        {
-                            html.LoadHtml(response.Content);
-
-                            offers = html.DocumentNode.Descendants("div").Where(p => p.GetAttributeValue("class", "") == "catalog__list").First();
-
-                            ad = offers.Descendants("a").FirstOrDefault(p => p.GetAttributeValue("class", "") == "car__link").GetAttributeValue("href", "");
-                        }
-                    }
-
                     if (ad != null)
                     {
                         string link = $"https://aster.kz{ad}";
@@ -83,7 +64,7 @@ namespace porulyu.BotSender.Services.Sities
         #endregion
 
         #region Получение новых объявлений
-        public List<Ad> GetNewAds(Filter filter, Ad lastAd, long ChatId, Region region, City city, Mark mark, Model model)
+        public async Task GetNewAds(Filter filter, List<Ad> Ads, long ChatId, Region region, City city, Mark mark, Model model)
         {
             try
             {
@@ -104,11 +85,18 @@ namespace porulyu.BotSender.Services.Sities
 
                     var ads = offers.Descendants("a").Where(p => p.GetAttributeValue("class", "") == "car__link").Select(p => p.GetAttributeValue("href", "")).ToList();
 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         Thread.Sleep(Constants.TimeoutLinks);
 
-                        client = new RestClient(BaseUrl + $"&page={i + 2}");
+                        if (BaseUrl[BaseUrl.Length - 1] == '/')
+                        {
+                            client = new RestClient(BaseUrl + $"?page={i + 2}");
+                        }
+                        else
+                        {
+                            client = new RestClient(BaseUrl + $"&page={i + 2}");
+                        }
 
                         client.Timeout = -1;
                         request = new RestRequest(Method.GET);
@@ -129,7 +117,7 @@ namespace porulyu.BotSender.Services.Sities
                     {
                         string link = $"https://aster.kz{ads[i]}";
 
-                        if (ads[i].Split('/')[2] != lastAd.Id)
+                        if (Ads.FirstOrDefault(p => p.SiteId == ads[i].Split('/')[2] && p.Site == "Aster") == null)
                         {
                             links.Add(link);
                         }
@@ -139,24 +127,14 @@ namespace porulyu.BotSender.Services.Sities
                         }
                     }
 
-                    List<Ad> NewAds = new List<Ad>();
-
-                    if (links.Count == ads.Count && ads.Count >= 3)
+                    for (int i = links.Count - 1; i >= 0; i--)
                     {
-                        for (int i = 0; i < 3; i++)
-                        {
-                            NewAds.Add(GetDataAd(links[i], ChatId));
-                        }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < links.Count; i++)
-                        {
-                            NewAds.Add(GetDataAd(links[i], ChatId));
-                        }
-                    }
+                        Ad NewAd = GetDataAd(links[i], ChatId);
 
-                    return NewAds;
+                        await new OperationsBot().SendNewAd(NewAd, ChatId);
+
+                        await new OperationsAd().Create(NewAd, filter);
+                    }
                 }
                 else
                 {
@@ -196,7 +174,8 @@ namespace porulyu.BotSender.Services.Sities
 
                     var Params = html.DocumentNode.Descendants("div").Where(p => p.GetAttributeValue("class", "") == "description").First().Descendants("div").ToList();
 
-                    string City = html.DocumentNode.Descendants("div").First(p => p.GetAttributeValue("class", "") == "icon-row__text").Descendants("p").First().InnerText;
+                    string temp = html.DocumentNode.Descendants("div").First(p => p.GetAttributeValue("class", "") == "icon-row__text").Descendants("p").First().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                    string City = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                     string Body = "";
                     string EngineCapaticy = "";
                     string Mileage = "";
@@ -212,45 +191,56 @@ namespace porulyu.BotSender.Services.Sities
                         switch (Params[i].Descendants("span").First().InnerText)
                         {
                             case "Город":
-                                City = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                City = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Кузов":
-                                Body = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Body = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Двигатель":
-                                EngineCapaticy = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                EngineCapaticy = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Пробег, км":
-                                Mileage = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Mileage = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Коробка передач":
-                                Transmisson = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Transmisson = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Руль":
-                                Wheel = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Wheel = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Цвет кузова":
-                                Color = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Color = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Привод":
-                                Actuator = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                Actuator = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Растаможен":
-                                CustomsClearedKZ = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                CustomsClearedKZ = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                             case "Состояние":
-                                State = Params[i].Descendants("span").Last().InnerText;
+                                temp = Params[i].Descendants("span").Last().InnerText.Replace("\n", "").Replace("\r", "").Trim();
+                                State = string.Join(" ", temp.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
                                 break;
                         }
                     }
 
-                    string Discription = html.DocumentNode.Descendants("p").First(p => p.GetAttributeValue("class", "") == "text-preline").InnerText;
+                    string Discription = html.DocumentNode.Descendants("p").First(p => p.GetAttributeValue("class", "") == "text-preline").InnerText.Replace("\n", "").Replace("\r", "").Trim();
 
                     string Price = html.DocumentNode.Descendants("meta").First(p => p.GetAttributeValue("itemprop", "") == "price").GetAttributeValue("content", "") + " ₸";
 
                     return new Ad
                     {
-                        Id = id,
+                        SiteId = id,
+                        Site = "Aster",
                         PhotosFileName = GetPhotos(LinksPhotos, id, ChatId),
                         Title = Title,
                         City = City,

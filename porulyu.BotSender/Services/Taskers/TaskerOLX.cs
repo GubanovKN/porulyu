@@ -27,11 +27,10 @@ namespace porulyu.BotSender.Services.Taskers
 
         private System.Timers.Timer Timer;
 
-        private Ad LastAd;
-
         private OperationsBot OperationsBot;
         private OperationsUser OperationsUser;
         private OperationsFilter OperationsFilter;
+        private OperationsAd OperationsAd;
         private OperationsOLX OperationsOLX;
 
         private bool CanStop;
@@ -58,17 +57,16 @@ namespace porulyu.BotSender.Services.Taskers
                 OperationsBot = new OperationsBot();
                 OperationsUser = new OperationsUser();
                 OperationsFilter = new OperationsFilter();
+                OperationsAd = new OperationsAd();
                 OperationsOLX = new OperationsOLX();
 
-                LastAd = OperationsOLX.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
+                Ad LastAd = OperationsOLX.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
 
-                if (LastAd != null && LastAd.Id != Filter.LastIdAdOLX)
+                if (OperationsAd.GetByFilter(Filter, "OLX").FirstOrDefault(p => p.SiteId == LastAd.SiteId) == null)
                 {
-                    await OperationsBot.SendNewAd(LastAd, ChatId, "OLX");
+                    await OperationsBot.SendNewAd(LastAd, ChatId);
 
-                    Filter.LastIdAdOLX = LastAd.Id;
-
-                    await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
+                    await OperationsAd.Create(LastAd, Filter);
                 }
 
                 Timer = new System.Timers.Timer(Constants.TimeoutUpdate);
@@ -82,6 +80,19 @@ namespace porulyu.BotSender.Services.Taskers
                 if (Ex.Message == "Forbidden: bot was blocked by the user")
                 {
                     await OperationsUser.Activate(ChatId, false);
+                }
+                else if(Ex.Message == "Need refresh token")
+                {
+                    try
+                    {
+                        new OperationsOLX().RefreshToken();
+                    }
+                    catch (Exception E)
+                    {
+                        logger.Error(E.Message);
+                        CanStop = true;
+                        CanRemove = true;
+                    }
                 }
                 else
                 {
@@ -102,42 +113,7 @@ namespace porulyu.BotSender.Services.Taskers
 
                     Timer.Stop();
 
-                    if (LastAd != null)
-                    {
-                        List<Ad> NewAds = OperationsOLX.GetNewAds(Filter, LastAd, ChatId, Region, City, Mark, Model);
-
-                        if (NewAds.Count > 0)
-                        {
-                            if (Directory.Exists($@"Temp\{ChatId}\OLX\{LastAd.Id}"))
-                            {
-                                Directory.Delete($@"Temp\{ChatId}\OLX\{LastAd.Id}", true);
-                            }
-
-                            LastAd = NewAds[0];
-
-                            Filter.LastIdAdOLX = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-
-                            for (int i = NewAds.Count - 1; -1 < i; i--)
-                            {
-                                await OperationsBot.SendNewAd(NewAds[i], ChatId, "OLX");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        LastAd = OperationsOLX.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
-
-                        if (LastAd != null && LastAd.Id != Filter.LastIdAdOLX)
-                        {
-                            await OperationsBot.SendNewAd(LastAd, ChatId, "OLX");
-
-                            Filter.LastIdAdOLX = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-                        }
-                    }
+                    await OperationsOLX.GetNewAds(Filter, OperationsAd.GetByFilter(Filter, "OLX"), ChatId, Region, City, Mark, Model);
 
                     Timer.Start();
 
@@ -159,6 +135,19 @@ namespace porulyu.BotSender.Services.Taskers
                     await OperationsUser.Activate(ChatId, false);
                     CanRemove = true;
                     Stop();
+                }
+                else if (Ex.Message == "Need refresh token")
+                {
+                    try
+                    {
+                        new OperationsOLX().RefreshToken();
+                    }
+                    catch (Exception E)
+                    {
+                        logger.Error(E.Message);
+                        CanRemove = true;
+                        Stop();
+                    }
                 }
                 else
                 {

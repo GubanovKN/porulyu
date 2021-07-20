@@ -27,11 +27,10 @@ namespace porulyu.BotSender.Services.Taskers
 
         private System.Timers.Timer Timer;
 
-        private Ad LastAd;
-
         private OperationsBot OperationsBot;
         private OperationsUser OperationsUser;
         private OperationsFilter OperationsFilter;
+        private OperationsAd OperationsAd;
         private OperationsAster OperationsAster;
 
         private bool CanStop;
@@ -58,17 +57,16 @@ namespace porulyu.BotSender.Services.Taskers
                 OperationsBot = new OperationsBot();
                 OperationsUser = new OperationsUser();
                 OperationsFilter = new OperationsFilter();
+                OperationsAd = new OperationsAd();
                 OperationsAster = new OperationsAster();
 
-                LastAd = OperationsAster.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
+                Ad LastAd = OperationsAster.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
 
-                if (LastAd != null && LastAd.Id != Filter.LastIdAdAster)
+                if (OperationsAd.GetByFilter(Filter, "Aster").FirstOrDefault(p => p.SiteId == LastAd.SiteId) == null)
                 {
-                    await OperationsBot.SendNewAd(LastAd, ChatId, "Aster");
+                    await OperationsBot.SendNewAd(LastAd, ChatId);
 
-                    Filter.LastIdAdAster = LastAd.Id;
-
-                    await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
+                    await OperationsAd.Create(LastAd, Filter);
                 }
 
                 Timer = new System.Timers.Timer(Constants.TimeoutUpdate);
@@ -102,42 +100,7 @@ namespace porulyu.BotSender.Services.Taskers
 
                     Timer.Stop();
 
-                    if (LastAd != null)
-                    {
-                        List<Ad> NewAds = OperationsAster.GetNewAds(Filter, LastAd, ChatId, Region, City, Mark, Model);
-
-                        if (NewAds.Count > 0)
-                        {
-                            if (Directory.Exists($@"Temp\{ChatId}\Aster\{LastAd.Id}"))
-                            {
-                                Directory.Delete($@"Temp\{ChatId}\Aster\{LastAd.Id}", true);
-                            }
-
-                            LastAd = NewAds[0];
-
-                            Filter.LastIdAdAster = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-
-                            for (int i = NewAds.Count - 1; -1 < i; i--)
-                            {
-                                await OperationsBot.SendNewAd(NewAds[i], ChatId, "Aster");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        LastAd = OperationsAster.GetLastAd(Filter, ChatId, Region, City, Mark, Model);
-
-                        if (LastAd != null && LastAd.Id != Filter.LastIdAdAster)
-                        {
-                            await OperationsBot.SendNewAd(LastAd, ChatId, "Aster");
-
-                            Filter.LastIdAdAster = LastAd.Id;
-
-                            await OperationsFilter.SaveLastIdAdFilter(Filter, LastAd.Id);
-                        }
-                    }
+                    await OperationsAster.GetNewAds(Filter, OperationsAd.GetByFilter(Filter, "Aster"), ChatId, Region, City, Mark, Model);
 
                     Timer.Start();
 

@@ -1,0 +1,721 @@
+[2021-07-19 11:54:27.8296] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 11:54:27.8855] [ERROR] Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.SqlClient.SqlException: Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_Ads_Filters_FilterId". Конфликт произошел в базе данных "PORULYU_DB", таблица "dbo.Filters", column 'Id'.
+Выполнение данной инструкции было прервано.
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__97.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__101.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.DbContext.<SaveChangesAsync>d__54.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Infrastructure.Services.OperationsAd.<Create>d__0.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Infrastructure\Services\OperationsAd.cs:строка 19
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerKolesa.<Start>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerKolesa.cs:строка 70
+[2021-07-19 11:54:28.5102] [ERROR] Need refresh token
+[2021-07-19 11:54:56.8030] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 11:54:56.8030] [ERROR] Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.SqlClient.SqlException: Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_Ads_Filters_FilterId". Конфликт произошел в базе данных "PORULYU_DB", таблица "dbo.Filters", column 'Id'.
+Выполнение данной инструкции было прервано.
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__97.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__101.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.DbContext.<SaveChangesAsync>d__54.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Infrastructure.Services.OperationsAd.<Create>d__0.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Infrastructure\Services\OperationsAd.cs:строка 19
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Start>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 69
+[2021-07-19 11:55:20.3182] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 11:55:20.3182] [ERROR] Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.SqlClient.SqlException: Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_Ads_Filters_FilterId". Конфликт произошел в базе данных "PORULYU_DB", таблица "dbo.Filters", column 'Id'.
+Выполнение данной инструкции было прервано.
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__97.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__101.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.DbContext.<SaveChangesAsync>d__54.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Infrastructure.Services.OperationsAd.<Create>d__0.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Infrastructure\Services\OperationsAd.cs:строка 19
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Start>d__17.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 69
+[2021-07-19 12:03:45.4035] [ERROR] Need refresh token
+[2021-07-19 12:09:12.0984] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:21:10.0486] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:21:32.0960] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:22:21.9493] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:22:38.5956] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:25:05.6181] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:26:12.1047] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:27:19.7128] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:28:48.6098] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:29:10.6644] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:31:02.6299] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:31:24.6820] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:32:31.0833] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:32:44.5010] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:43:53.9831] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:44:59.6391] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 12:58:16.1542] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:03:18.9700] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:04:02.0689] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:04:24.1331] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:04:46.1813] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:20:07.0598] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:25:29.6146] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:26:35.2757] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:26:57.3338] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:27:19.3883] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 13:37:10.8055] [ERROR] Need refresh token
+[2021-07-19 13:41:56.7591] [ERROR] Need refresh token
+[2021-07-19 13:52:37.0046] [ERROR] Need refresh token
+[2021-07-19 14:12:27.9509] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:12:50.0122] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:28:51.0850] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:30:16.9266] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:39:06.7929] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:40:57.9369] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:49:25.6989] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:49:27.6261] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:51:15.6868] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:52:20.8374] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:52:42.8866] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 14:53:04.9385] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:05:53.2347] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:06:59.3383] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:07:21.3811] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:07:43.4348] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:08:50.8567] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:20:22.1740] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:20:22.1909] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:20:40.3939] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:20:40.3939] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:21:21.1240] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:21:21.1249] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:21:23.9598] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:21:23.9598] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:22:00.6415] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:22:00.6415] [ERROR] System.Exception: Значение не может быть неопределенным.
+Имя параметра: bytes ---> System.Exception: Значение не может быть неопределенным.
+Имя параметра: bytes ---> System.ArgumentNullException: Значение не может быть неопределенным.
+Имя параметра: bytes
+   в System.IO.File.WriteAllBytes(String path, Byte[] bytes)
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetPhotos(List`1 Links, String Id, Int64 ChatId) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 280
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetPhotos(List`1 Links, String Id, Int64 ChatId) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 289
+   в porulyu.BotSender.Services.Sities.OperationsOLX.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 209
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Sities.OperationsOLX.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 255
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 116
+[2021-07-19 15:22:21.1087] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:22:21.1087] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:22:23.9399] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:22:23.9399] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:23:21.1378] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:23:21.1378] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:23:21.7742] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:23:21.7742] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:23:23.9857] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:23:23.9857] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:24:21.1775] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:24:21.1775] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:24:21.7590] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:24:21.7590] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:24:23.9722] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:24:23.9722] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:25:21.1873] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:25:21.1873] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:25:21.7911] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:25:21.7911] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:25:23.9748] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:25:23.9748] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:26:21.1968] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:26:21.1968] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:26:21.7866] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:26:21.7866] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:26:23.9917] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:26:23.9917] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:27:21.1862] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:27:21.1872] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:27:21.8108] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:27:21.8108] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:27:24.0000] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:27:24.0000] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:28:21.1806] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:28:21.1806] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:28:21.8108] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:28:21.8108] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:28:24.0072] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:28:24.0072] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:29:21.1275] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:29:21.1275] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 15:29:21.8292] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:29:21.8292] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:29:24.0243] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:29:24.0243] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:30:21.8268] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:30:21.8278] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 15:30:24.0369] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 15:30:24.0369] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 15:33:00.2865] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:33:43.3543] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:34:05.4092] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:36:13.2731] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:38:20.5959] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:42:41.6097] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 15:54:52.5340] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:01:17.7631] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:01:39.8214] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:12:03.8442] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:12:25.9055] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:15:08.7574] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:16:32.8356] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:19:03.5538] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:19:25.5957] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:19:47.6431] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:30:20.3451] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:30:42.4198] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:39:10.3640] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:53:51.2524] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:54:13.3004] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:54:35.3557] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 16:54:57.3990] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:09:13.9951] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:10:58.6581] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:13:10.8500] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:15:33.0384] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:33:57.7573] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:40:15.7062] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:49:51.0735] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:53:10.3855] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 17:53:32.4262] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:04:29.8607] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:17:43.9093] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:20:23.5384] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:23:11.4557] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:23:33.5157] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:27:56.3478] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:30:32.8943] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:45:07.9104] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:46:19.8677] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:53:46.6397] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:53:46.6437] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 18:53:59.5388] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:53:59.5388] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 18:54:00.5266] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:54:00.5266] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 18:54:30.1829] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:54:30.1829] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 18:54:35.8281] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:54:35.8281] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 18:54:35.8281] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:54:35.8281] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 18:54:35.9079] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:54:36.9212] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:54:37.9335] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:54:38.9418] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:54:39.9481] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:54:40.9574] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:55:03.0002] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:55:21.6314] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:55:21.6314] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:55:21.6314] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 18:55:21.6314] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:55:21.6314] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 18:55:43.6898] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:55:46.6475] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:55:46.6475] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 18:55:47.9745] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:09.1836] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:56:09.1836] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 18:56:10.0230] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:11.0399] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:12.0511] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:13.0662] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:14.0859] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:15.1362] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:16.1463] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:16.8545] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:56:16.8545] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 18:56:17.1600] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:18.1786] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:19.1873] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:20.1955] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:21.2078] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:22.2201] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:23.2424] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:24.2659] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:25.2832] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:26.3028] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:27.3125] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:28.3261] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:29.3350] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:30.3471] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:31.3599] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:32.3653] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:33.3847] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:34.3920] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:35.4058] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:36.4173] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:37.4304] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:38.4810] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:39.4995] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:40.5085] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:41.5174] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:42.5302] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:43.5435] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:44.5554] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:45.5637] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:46.5774] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:46.6520] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:56:46.6520] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 18:56:47.5896] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:48.6064] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:49.6154] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:50.6336] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:51.6484] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:52.6585] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:53.7070] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:54.7253] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:55.7369] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:56.8228] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:57.8486] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:56:59.5565] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:06.6874] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:07.6997] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:08.7070] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:09.7153] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:10.3117] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:57:10.3127] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 18:57:10.7226] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:11.7319] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:12.7422] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:13.7465] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:14.7528] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:15.7601] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:16.7684] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:57:16.8253] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 18:57:16.8253] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 18:57:17.7797] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 18:58:22.7308] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:00:51.2230] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:02:40.7707] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:14:19.6942] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:21:28.0593] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:38:40.7071] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:39:02.7483] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:47:10.8496] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:55:46.6814] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 19:57:13.0885] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:05:50.2200] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:06:56.4859] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:16:12.3700] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:18:47.3365] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:26:26.9841] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:26:49.0511] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:30:03.8412] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:33:10.3774] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:35:20.7968] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 20:40:31.4714] [ERROR] Need refresh token
+[2021-07-19 21:05:55.9683] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 21:11:11.7273] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 21:12:08.0438] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:12:08.0566] [ERROR] System.Exception: Страница поиска не найдена ---> System.Exception: Страница поиска не найдена
+   в porulyu.BotSender.Services.Sities.OperationsAster.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 141
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Sities.OperationsAster.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 146
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 103
+[2021-07-19 21:12:33.0094] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:12:33.0094] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 21:12:33.9160] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:12:33.9160] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 21:13:11.3211] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:13:11.3211] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 21:13:12.3144] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:13:12.3144] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 21:13:29.2029] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:13:29.2029] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 21:14:11.3470] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:14:11.3470] [ERROR] Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Не удается выполнить привязки исполняющей среды по нулевой ссылке
+   в CallSite.Target(Closure , CallSite , Object )
+   в porulyu.BotSender.Services.Sities.OperationsMyCar.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsMyCar.cs:строка 305
+   в porulyu.BotSender.Services.Taskers.TaskerMyCar.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerMyCar.cs:строка 97
+[2021-07-19 21:14:12.2884] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:14:12.2884] [ERROR] System.Exception: OLX Api не доступен
+   в porulyu.BotSender.Services.Sities.OperationsOLX.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsOLX.cs:строка 382
+   в porulyu.BotSender.Services.Taskers.TaskerOLX.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerOLX.cs:строка 110
+[2021-07-19 21:14:29.2033] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 21:14:29.2033] [ERROR] System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в porulyu.BotSender.Services.Sities.OperationsAster.GetCountAds(Filter filter, Region region, City city, Mark mark, Model model) в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsAster.cs:строка 415
+   в porulyu.BotSender.Services.Taskers.TaskerAster.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerAster.cs:строка 97
+[2021-07-19 22:16:13.5938] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 22:23:41.6436] [ERROR] Произошла ошибка при отправке запроса.
+[2021-07-19 23:14:26.3074] [ERROR] Ошибка пользователя с ID 305613360
+[2021-07-19 23:14:26.4879] [ERROR] System.Exception: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.SqlClient.SqlException: Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_Ads_Filters_FilterId". Конфликт произошел в базе данных "PORULYU_DB", таблица "dbo.Filters", column 'Id'.
+Выполнение данной инструкции было прервано.
+   в Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__181_0(Task`1 result) в H:\tsaagent4\_work\2\s\src\Microsoft.Data.SqlClient\netfx\src\Microsoft\Data\SqlClient\SqlCommand.cs:строка 2959
+   в System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   в System.Threading.Tasks.Task.Execute()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Storage.RelationalCommand.<ExecuteReaderAsync>d__17.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.<ExecuteAsync>d__29.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   в Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.<ExecuteAsync>d__8.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__97.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<SaveChangesAsync>d__101.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в Microsoft.EntityFrameworkCore.DbContext.<SaveChangesAsync>d__54.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.Infrastructure.Services.OperationsAd.<Create>d__0.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.Infrastructure\Services\OperationsAd.cs:строка 19
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Sities.OperationsKolesa.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsKolesa.cs:строка 348
+   --- Конец трассировки внутреннего стека исключений ---
+   в porulyu.BotSender.Services.Sities.OperationsKolesa.<GetNewAds>d__1.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Sities\OperationsKolesa.cs:строка 358
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotSender.Services.Taskers.TaskerKolesa.<Timer_Elapsed>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotSender\Services\Taskers\TaskerKolesa.cs:строка 104

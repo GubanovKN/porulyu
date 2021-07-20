@@ -16,6 +16,8 @@ namespace porulyu.BotMain.Common
 
         public static string PathUnitpay = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Unitpay.conf";
 
+        public static string PathOLX = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\OLX.conf";
+
         public static Domain.Models.Bot BotMain = new Domain.Models.Bot();
         public static Domain.Models.Bot BotSender = new Domain.Models.Bot();
 
@@ -23,6 +25,8 @@ namespace porulyu.BotMain.Common
         public static string CountSearchOLXURL = "https://m.olx.kz/api/v1/offers/metadata/search/?";
         public static string CountSearchAsterURL = "https://aster.kz/rest/ads/countByFilter";
         public static string CountSearchMyCarURL = "https://cars.mycar.kz/api/publications/?";
+
+        public static string OLXAccessToken = "";
 
         public static string CheckCarUserName = "";
         public static string CheckCarPassword = "";

@@ -12,6 +12,7 @@ namespace porulyu.Infrastructure.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Filter> Filters { get; set; }
+        public DbSet<Ad> Ads { get; set; }
         public DbSet<Complain> Complains { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Rate> Rates { get; set; }
@@ -65,6 +66,11 @@ namespace porulyu.Infrastructure.Data
             modelBuilder.Entity<Rate>()
             .HasMany(t => t.Users)
             .WithOne(p => p.Rate)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Filter>()
+            .HasMany(t => t.Ads)
+            .WithOne(p => p.Filter)
             .OnDelete(DeleteBehavior.Cascade);
 
             List<Region> regions = new OperaitionsData().LoadRegions();

@@ -205,7 +205,7 @@ namespace porulyu.BotSender.Services.Main
         {
             await Bot.AnswerCallbackQueryAsync(Id, Message);
         }
-        public async Task SendNewAd(Ad ad, long ChatId, string Site)
+        public async Task SendNewAd(Ad ad, long ChatId)
         {
             try
             {
@@ -214,7 +214,7 @@ namespace porulyu.BotSender.Services.Main
 
                 bool Send = false;
 
-                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(ad.Id, Site));
+                var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetAdButtons(ad.SiteId, ad.Site));
 
                 while (!Send)
                 {
@@ -228,8 +228,7 @@ namespace porulyu.BotSender.Services.Main
                                 chatId: ChatId,
                                 photo: new InputOnlineFile(fileStream, fileName),
                                 caption: OperationsCreateMessagesBot.GetAdText(ad),
-                                replyMarkup: inlineKeyboard,
-                                parseMode: ParseMode.Html
+                                replyMarkup: inlineKeyboard
                             );
                         }
                         else
@@ -237,8 +236,7 @@ namespace porulyu.BotSender.Services.Main
                             await Bot.SendTextMessageAsync(
                                 chatId: ChatId,
                                 text: OperationsCreateMessagesBot.GetAdText(ad),
-                                replyMarkup: inlineKeyboard,
-                                parseMode: ParseMode.Html
+                                replyMarkup: inlineKeyboard
                                 );
                         }
 
@@ -246,6 +244,8 @@ namespace porulyu.BotSender.Services.Main
                     }
                     catch (Exception Ex)
                     {
+                        logger.Error(Ex.Message);
+
                         if (Ex.Message == "Forbidden: bot was blocked by the user")
                         {
                             throw new Exception(Ex.Message, Ex);
@@ -257,7 +257,7 @@ namespace porulyu.BotSender.Services.Main
                     }
                 }
 
-                DeleteTemp(ad.Id, ChatId.ToString(), Site);
+                DeleteTemp(ad.SiteId, ChatId.ToString(), ad.Site);
             }
             catch (Exception Ex)
             {

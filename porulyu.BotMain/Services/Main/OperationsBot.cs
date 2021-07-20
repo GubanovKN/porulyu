@@ -139,7 +139,19 @@ namespace porulyu.BotMain.Services.Main
                                                     return;
                                             }
                                             break;
+                                        case 3:
+                                            PositionDialog = user.PositionDialog - 130;
+                                            switch (PositionDialog)
+                                            {
+                                                case 1:
+                                                    return;
+                                                case 2:
+                                                    return;
+                                            }
+                                            break;
                                     }
+                                    await new OperationsFilter().DeleteFilter(user.Filters.Last());
+
                                     break;
                                 case 3:
                                     PositionDialog = user.PositionDialog - 300;
@@ -151,9 +163,9 @@ namespace porulyu.BotMain.Services.Main
                                             await SendFreeReport(message, user);
                                             return;
                                         case 11:
-                                            throw new Exception("Запаситесь терпением, отчет подготавливается");
+                                            return;
                                         case 22:
-                                            throw new Exception("Запаситесь терпением, отчет подготавливается");
+                                            return;
                                     }
                                     break;
                             }
@@ -264,6 +276,7 @@ namespace porulyu.BotMain.Services.Main
                                     }
                                     break;
                                 case "MyFilters":
+                                    await new OperationsUser().SetPositionViewUser(user, 0);
                                     await SendMyFilters(callbackQuery.Message, user);
                                     break;
                                 case "OK":
@@ -523,13 +536,16 @@ namespace porulyu.BotMain.Services.Main
                             case "Next":
                                 if (user.Filters.Last().Name != null)
                                 {
-                                    if(await new OperationsAd().GetCountAds(user.Filters.Last()) != 0)
+                                    await SendLoadFilter(callbackQuery.Message, user);
+
+                                    if (await new OperationsAd().GetCountAds(user.Filters.Last()) != 0)
                                     {
                                         await SendSave(callbackQuery.Message, user);
                                     }
                                     else
                                     {
                                         await SendPopUp(callbackQuery.Id, "По данным параметрам не найдено автомобилей");
+                                        await SendCreateFitler(callbackQuery.Message, user);
                                     }
                                 }
                                 else
@@ -570,7 +586,17 @@ namespace porulyu.BotMain.Services.Main
                             case "Next":
                                 if (user.Filters.Last().Name != null)
                                 {
-                                    await SendSave(callbackQuery.Message, user);
+                                    await SendLoadFilter(callbackQuery.Message, user);
+
+                                    if (await new OperationsAd().GetCountAds(user.Filters.Last()) != 0)
+                                    {
+                                        await SendSave(callbackQuery.Message, user);
+                                    }
+                                    else
+                                    {
+                                        await SendPopUp(callbackQuery.Id, "По данным параметрам не найдено автомобилей");
+                                        await SendCreateOptionallyFitler(callbackQuery.Message, user);
+                                    }
                                 }
                                 else
                                 {
@@ -1379,6 +1405,35 @@ namespace porulyu.BotMain.Services.Main
 
             await new OperationsUser().SetPositionDialogUser(user, 125);
         }
+        private async Task SendLoadFilter(Message message, Domain.Models.User user)
+        {
+            if (message.From.Id == Bot.BotId)
+            {
+                await Bot.EditMessageTextAsync(
+                        chatId: message.Chat.Id,
+                        messageId: message.MessageId,
+                        text: OperationsCreateMessagesBot.GetLoadFilterText(),
+                        parseMode: ParseMode.Html
+                    );
+            }
+            else
+            {
+                int Id = (await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: OperationsCreateMessagesBot.GetLoadFilterText(),
+                    parseMode: ParseMode.Html
+                    )).MessageId;
+
+                if (user.LastMessageId != 0 && Id != user.LastMessageId)
+                {
+                    await DeleteMessage(message.Chat.Id, user.LastMessageId);
+                }
+
+                await new OperationsUser().SetLastMessageIdUser(user, Id);
+            }
+
+            await new OperationsUser().SetPositionDialogUser(user, 131);
+        }
         private async Task SendSave(Message message, Domain.Models.User user)
         {
             var inlineKeyboard = new InlineKeyboardMarkup(OperationsCreateMessagesBot.GetSaveButtons());
@@ -1410,7 +1465,7 @@ namespace porulyu.BotMain.Services.Main
                 await new OperationsUser().SetLastMessageIdUser(user, Id);
             }
 
-            await new OperationsUser().SetPositionDialogUser(user, 130);
+            await new OperationsUser().SetPositionDialogUser(user, 132);
         }
         private async Task SendWork(Message message, Domain.Models.User user)
         {

@@ -1,0 +1,95 @@
+[2021-07-20 12:00:19.7297] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SendMarks>d__21.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 1026
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionMainFilter>d__14.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 653
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionFilter>d__13.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 545
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 277
+[2021-07-20 12:02:11.8917] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SendCreateFitler>d__18.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 926
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionMainFilter>d__14.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 657
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionFilter>d__13.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 545
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 277
+[2021-07-20 12:02:12.1770] [ERROR] Telegram.Bot.Exceptions.MessageIsNotModifiedException: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SendMarks>d__21.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 1026
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionMainFilter>d__14.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 662
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionFilter>d__13.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 545
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 277
+[2021-07-20 12:13:27.1908] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, фильтр проверяется
+[2021-07-20 12:13:28.3457] [ERROR] Telegram.Bot.Exceptions.ApiRequestException: Bad Request: message to edit not found
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SendSave>d__33.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 1439
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<SelectingSubActionFilter>d__13.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 539
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<BotOnCallbackQueryReceived>d__8.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 285
+[2021-07-20 12:14:27.9441] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, фильтр проверяется
+[2021-07-20 12:21:21.9793] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, фильтр проверяется
+[2021-07-20 12:22:10.0895] [ERROR] Пользователь:305613360 Ошибка:Запаситесь терпением, фильтр проверяется
+[2021-07-20 12:23:00.3132] [ERROR] Telegram.Bot.Exceptions.ApiRequestException: Bad Request: message to delete not found
+   в Telegram.Bot.TelegramBotClient.<MakeRequestAsync>d__54`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в porulyu.BotMain.Services.Main.OperationsBot.<DeleteMessage>d__64.MoveNext() в C:\Users\thedr\Desktop\Works\StartUps\porulyu\porulyu.BotMain\Services\Main\OperationsBot.cs:строка 2605
+[2021-07-20 14:59:02.0550] [ERROR] Не удается выполнить привязки исполняющей среды по нулевой ссылке

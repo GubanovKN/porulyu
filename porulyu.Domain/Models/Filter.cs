@@ -37,13 +37,10 @@ namespace porulyu.Domain.Models
 
         public bool Work { get; set; }
 
-        public string LastIdAdKolesa { get; set; }
-        public string LastIdAdOLX { get; set; }
-        public string LastIdAdMyCar { get; set; }
-        public string LastIdAdAster { get; set; }
-
         public long UserId { get; set; }
         public User User { get; set; }
+
+        public ICollection<Ad> Ads { get; set; }
 
         public override string ToString()
         {

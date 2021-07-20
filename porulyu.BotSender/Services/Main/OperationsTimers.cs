@@ -20,6 +20,8 @@ namespace porulyu.BotSender.Services.Main
         private List<TaskerMyCar> TaskersMyCar;
         private List<TaskerAster> TaskersAster;
 
+        private bool OLXAccess = true;
+
         System.Timers.Timer TimerFilters;
 
         public OperationsTimers()
@@ -83,7 +85,12 @@ namespace porulyu.BotSender.Services.Main
                                 }
 
                                 await CreateKolesa(filter, region, city, mark, model, users[i]);
-                                await CreateOLX(filter, region, city, mark, model, users[i]);
+
+                                if (OLXAccess)
+                                {
+                                    await CreateOLX(filter, region, city, mark, model, users[i]);
+                                }
+
                                 await CreateAster(filter, region, city, mark, model, users[i]);
                                 await CreateMyCar(filter, region, city, mark, model, users[i]);
                             }
@@ -128,7 +135,7 @@ namespace porulyu.BotSender.Services.Main
                     }
                 }
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 logger.Error(Ex.Message);
             }
@@ -159,6 +166,19 @@ namespace porulyu.BotSender.Services.Main
             catch (Exception Ex)
             {
                 logger.Error(Ex.Message);
+
+                if (Ex.Message == "Need refresh token")
+                {
+                    try
+                    {
+                        new OperationsOLX().RefreshToken();
+                    }
+                    catch (Exception E)
+                    {
+                        logger.Error(E.Message);
+                        OLXAccess = false;
+                    }
+                }
             }
         }
         private async Task CreateAster(Filter filter, Region region, City city, Mark mark, Model model, User user)
@@ -236,7 +256,7 @@ namespace porulyu.BotSender.Services.Main
                     TaskersKolesa.Remove(task);
                 }
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 logger.Error(Ex.Message);
             }

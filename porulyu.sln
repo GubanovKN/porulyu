@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "porulyu.Desktop", "porulyu.Desktop\porulyu.Desktop.csproj", "{2F700EA4-6224-4994-9C8C-7E12D7F96CA4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "porulyu.Domain", "porulyu.Domain\porulyu.Domain.csproj", "{0F6EE653-662F-4623-BCDC-8B614459DC7E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "porulyu.Infrastructure", "porulyu.Infrastructure\porulyu.Infrastructure.csproj", "{26A70353-2A14-4695-94A5-C3EA2A3BE391}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F700EA4-6224-4994-9C8C-7E12D7F96CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F700EA4-6224-4994-9C8C-7E12D7F96CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F700EA4-6224-4994-9C8C-7E12D7F96CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F700EA4-6224-4994-9C8C-7E12D7F96CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F6EE653-662F-4623-BCDC-8B614459DC7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F6EE653-662F-4623-BCDC-8B614459DC7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6EE653-662F-4623-BCDC-8B614459DC7E}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -27,7 +27,7 @@ namespace porulyu.BotMain.Services.Main
         {
             string Text = "Привет, это бот поРулю – помощник в поиске авто\n\r" +
                           "Для продолжения работы необходимо ознакомиться и принять\n\r" +
-                          "<a href=\"https://test.com\">\"Пользовательское соглашение\"</a>.";
+                          "<a href=\"https://porulyu.kz/terms-of-use\">\"Пользовательское соглашение\"</a>.";
 
             return Text;
         }
@@ -633,6 +633,12 @@ namespace porulyu.BotMain.Services.Main
             };
 
             return inlineKeyboards;
+        }
+        public string GetLoadFilterText()
+        {
+            string Text = $"Проверяю информацию, ожидайте\n\r";
+
+            return Text;
         }
         public async Task<string> GetSaveText(Filter filter)
         {

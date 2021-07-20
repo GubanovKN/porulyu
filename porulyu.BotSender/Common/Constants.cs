@@ -12,6 +12,7 @@ namespace porulyu.BotSender.Common
     {
         public static string PathBots = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Bots.conf";
         public static string PathConfig = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\Config.conf";
+        public static string PathOLX = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName) + @"\Program\Settings\OLX.conf";
 
         public static string KolesaBaseURL = "https://kolesa.kz/cars/";
         public static string KolesaCountSearchURL = "https://m.kolesa.kz/a/ajax-get-search-nb-results/cars/";
@@ -23,9 +24,10 @@ namespace porulyu.BotSender.Common
         public static string MyCarCountSearchURL = "https://cars.mycar.kz/api/publications/?";
 
         public static int TimeoutLinks = 0;
-        public static int TimeoutPhones = 0;
         public static int TimeoutImage = 0;
         public static int TimeoutUpdate = 0;
+
+        public static string OLXAccessToken = "";
 
         public static Domain.Models.Bot BotMain = new Domain.Models.Bot();
         public static Domain.Models.Bot BotSender = new Domain.Models.Bot();

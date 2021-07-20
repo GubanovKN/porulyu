@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace porulyu.BotMain.Services.Main
 {
@@ -112,15 +113,22 @@ namespace porulyu.BotMain.Services.Main
         #region Количество объявлений на Kolesa.kz
         private int GetCountAdsKolesa(Filter filter, Region region, City city, Mark mark, Model model)
         {
-            var client = new RestClient(CombineCountSearchKolesaURL(filter, region, city, mark, model));
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("X-Requested-With", "XMLHttpRequest");
-            IRestResponse response = client.Execute(request);
+            try
+            {
+                var client = new RestClient(CombineCountSearchKolesaURL(filter, region, city, mark, model));
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                IRestResponse response = client.Execute(request);
 
-            dynamic content = JsonConvert.DeserializeObject(response.Content);
+                dynamic content = JsonConvert.DeserializeObject(response.Content);
 
-            return content.nbCnt;
+                return content.nbCnt;
+            }
+            catch
+            {
+                return 0;
+            }
         }
         private string CombineCountSearchKolesaURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
@@ -217,15 +225,35 @@ namespace porulyu.BotMain.Services.Main
         #region Количество объявлений на OLX.kz
         private int GetCountAdsOLX(Filter filter, Region region, City city, Mark mark, Model model)
         {
-            var client = new RestClient(CombineCountSearchOLXURL(filter, region, city, mark, model));
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", "Bearer 2ea3256734b100b12a7076ab7aa7edc48e1aa993");
-            IRestResponse response = client.Execute(request);
+            try
+            {
+                var client = new RestClient(CombineCountSearchOLXURL(filter, region, city, mark, model));
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", $"Bearer {Constants.OLXAccessToken}");
+                IRestResponse response = client.Execute(request);
 
-            dynamic content = JsonConvert.DeserializeObject(response.Content);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    dynamic content = JsonConvert.DeserializeObject(response.Content);
 
-            return content.data.total_count;
+                    return content.data.total_count;
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    RefreshToken();
+
+                    return 0;
+                }
+                else
+                {
+                    throw new Exception("OLX Api не доступен");
+                }
+            }
+            catch
+            {
+                return 0;
+            }
         }
         private string CombineCountSearchOLXURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
@@ -291,20 +319,55 @@ namespace porulyu.BotMain.Services.Main
 
             return url;
         }
+        public void RefreshToken()
+        {
+            XDocument doc = XDocument.Load(Constants.PathOLX);
+
+            var client = new RestClient("https://m.olx.kz/api/open/oauth/token/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AlwaysMultipartFormData = true;
+
+            request.AddParameter("client_id", doc.Element("Params").Element("ClientId").Value);
+            request.AddParameter("scope", doc.Element("Params").Element("Scope").Value);
+            request.AddParameter("grant_type", doc.Element("Params").Element("GrantType").Value);
+            request.AddParameter("client_secret", doc.Element("Params").Element("ClientSecret").Value);
+            request.AddParameter("refresh_token", doc.Element("Params").Element("RefreshToken").Value);
+
+            IRestResponse response = client.Execute(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                dynamic content = JsonConvert.DeserializeObject(response.Content);
+
+                Constants.OLXAccessToken = content.access_token.ToString();
+            }
+            else
+            {
+                throw new Exception("Error getting new token for autorize");
+            }
+        }
         #endregion
 
         #region Количество объявлений на Aster.kz
         private int GetCountAdsAster(Filter filter, Region region, City city, Mark mark, Model model)
         {
-            var client = new RestClient(Constants.CountSearchAsterURL);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/json");
-            var body = CombineCountSearchAsterURL(filter, region, city, mark, model);
-            request.AddParameter("application/json", body, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
+            try
+            {
+                var client = new RestClient(Constants.CountSearchAsterURL);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                var body = CombineCountSearchAsterURL(filter, region, city, mark, model);
+                request.AddParameter("application/json", body, ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
 
-            return Convert.ToInt32(response.Content);
+                return Convert.ToInt32(response.Content);
+            }
+            catch
+            {
+                return 0;
+            }
         }
         private string CombineCountSearchAsterURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
@@ -453,14 +516,21 @@ namespace porulyu.BotMain.Services.Main
         #region Количество объявлений на MyCar.kz
         private int GetCountAdsMyCar(Filter filter, Region region, City city, Mark mark, Model model)
         {
-            var client = new RestClient(CombineCountSearchMyCarURL(filter, region, city, mark, model));
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
+            try
+            {
+                var client = new RestClient(CombineCountSearchMyCarURL(filter, region, city, mark, model));
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
 
-            dynamic content = JsonConvert.DeserializeObject(response.Content);
+                dynamic content = JsonConvert.DeserializeObject(response.Content);
 
-            return content.count;
+                return content.count;
+            }
+            catch
+            {
+                return 0;
+            }
         }
         private string CombineCountSearchMyCarURL(Filter filter, Region region, City city, Mark mark, Model model)
         {
